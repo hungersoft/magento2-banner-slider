@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="HS_BannerSlider::banner_slider"
+            title="Hungersoft Guest to Customer"
+            module="HS_BannerSlider"
+            parent="Magento_Backend::content"
+            sortOrder="600"
+            resource="HS_BannerSlider::banner_slider"/>
+
+        <add
+            id="HS_BannerSlider::hs_banner_slider_banner"
+            module="HS_BannerSlider"
+            title="Banner(s)"
+            parent="HS_BannerSlider::banner_slider"
+            sortOrder="700"
+            action="hs_banner_slider/banner/index"
+            resource="HS_BannerSlider::hs_banner_slider_banner" />
+
+        <add
+            id="HS_BannerSlider::hs_banner_slider_slider"
+            module="HS_BannerSlider"
+            title="Slider(s)"
+            parent="HS_BannerSlider::banner_slider"
+            sortOrder="800"
+            action="hs_banner_slider/slider/index"
+            resource="HS_BannerSlider::hs_banner_slider_slider" />
+    </menu>
+</config>

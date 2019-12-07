@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="HS_BannerSlider::Banner" sortOrder="10" title="Banner">
+                        <resource id="HS_BannerSlider::Banner_save" sortOrder="10" title="Save Banner"/>
+                        <resource id="HS_BannerSlider::Banner_delete" sortOrder="20" title="Delete Banner"/>
+                        <resource id="HS_BannerSlider::Banner_update" sortOrder="30" title="Update Banner"/>
+                        <resource id="HS_BannerSlider::Banner_view" sortOrder="40" title="View Banner"/>
+                    </resource>
+                    <resource id="HS_BannerSlider::Slider" sortOrder="10" title="Slider">
+                        <resource id="HS_BannerSlider::Slider_save" sortOrder="10" title="Save Slider"/>
+                        <resource id="HS_BannerSlider::Slider_delete" sortOrder="20" title="Delete Slider"/>
+                        <resource id="HS_BannerSlider::Slider_update" sortOrder="30" title="Update Slider"/>
+                        <resource id="HS_BannerSlider::Slider_view" sortOrder="40" title="View Slider"/>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="HS_BannerSlider::config_hs_bannerslider" title="Hungersoft Banner Slider"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

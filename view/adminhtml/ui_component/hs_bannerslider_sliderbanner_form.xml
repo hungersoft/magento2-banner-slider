@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hs_bannerslider_sliderbanner_form.sliderbanner_form_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\BackButton" name="back"/>
+            <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\DeleteButton" name="delete"/>
+            <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\SaveButton" name="save"/>
+            <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\SaveAndContinueButton" name="save_and_continue"/>
+        </buttons>
+        <namespace>hs_bannerslider_sliderbanner_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>hs_bannerslider_sliderbanner_form.sliderbanner_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="sliderbanner_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="HS\BannerSlider\Model\SliderBanner\DataProvider" name="sliderbanner_form_data_source">
+            <settings>
+                <requestFieldName>sliderbanner_id</requestFieldName>
+                <primaryFieldName>sliderbanner_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>General</label>
+        </settings>
+        <field formElement="input" name="banner_id" sortOrder="320">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">SliderBanner</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">banner_id</label>
+                <dataScope>banner_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

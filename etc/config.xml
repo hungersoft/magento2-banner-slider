@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hs_banner_slider>
+            <general>
+                <enabled/>
+            </general>
+            <slider>
+                <responsive/>
+                <loop/>
+                <auto_width/>
+                <auto_height/>
+                <controls/>
+                <nav/>
+                <nav_as_thumbnails/>
+                <autoplay/>
+                <autoplay_timeout/>
+                <lazyload/>
+            </slider>
+        </hs_banner_slider>
+    </default>
+</config>
