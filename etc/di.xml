@@ -36,4 +36,25 @@
             <argument name="resourceModel" xsi:type="string">HS\BannerSlider\Model\ResourceModel\SliderBanner\Collection</argument>
         </arguments>
     </virtualType>
+
+
+    <!-- Image Uploader -->
+    <virtualType name="HS\BannerSlider\Model\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">hs_banner_slider/tmp</argument>
+            <argument name="basePath" xsi:type="string">hs_banner_slider</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="HS\BannerSlider\Controller\Adminhtml\Banner\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">HS\BannerSlider\Model\ImageUploader</argument>
+        </arguments>
+    </type>
+    <!-- End Image Uploader -->
 </config>

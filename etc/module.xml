@@ -3,6 +3,7 @@
     <module name="HS_BannerSlider" setup_version="1.0.0">
         <sequence>
             <module name="HS_All"/>
+            <module name="Magento_Catalog"/>
         </sequence>
     </module>
 </config>
