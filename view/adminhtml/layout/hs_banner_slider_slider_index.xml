@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="hs_bannerslider_sliderbanner_listing"/>
+            <uiComponent name="hs_banner_slider_slider_listing"/>
         </referenceContainer>
     </body>
 </page>

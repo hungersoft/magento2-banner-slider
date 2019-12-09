@@ -19,19 +19,19 @@ namespace HS\BannerSlider\Api\Data;
 
 interface SliderBannerInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const SLIDERBANNER_ID = 'sliderbanner_id';
+    const SLIDERBANNER_ID = 'slider_banner_id';
     const SLIDER_ID = 'slider_id';
     const BANNER_ID = 'banner_id';
 
     /**
-     * Get sliderbanner_id.
+     * Get slider_banner_id.
      *
      * @return string|null
      */
     public function getSliderbannerId();
 
     /**
-     * Set sliderbanner_id.
+     * Set slider_banner_id.
      *
      * @param string $sliderbannerId
      *

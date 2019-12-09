@@ -60,7 +60,7 @@ class Save extends \Magento\Backend\App\Action
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Slider.'));
-                $this->dataPersistor->clear('hs_bannerslider_slider');
+                $this->dataPersistor->clear('hs_banner_slider_slider');
 
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['slider_id' => $model->getId()]);
@@ -73,7 +73,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Slider.'));
             }
 
-            $this->dataPersistor->set('hs_bannerslider_slider', $data);
+            $this->dataPersistor->set('hs_banner_slider_slider', $data);
 
             return $resultRedirect->setPath('*/*/edit', ['slider_id' => $this->getRequest()->getParam('slider_id')]);
         }

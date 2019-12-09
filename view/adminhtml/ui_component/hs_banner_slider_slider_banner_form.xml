@@ -2,7 +2,7 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hs_bannerslider_sliderbanner_form.sliderbanner_form_data_source</item>
+            <item name="provider" xsi:type="string">hs_banner_slider_slider_banner_form.slider_banner_form_data_source</item>
         </item>
         <item name="label" translate="true" xsi:type="string">General Information</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -14,13 +14,13 @@
             <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\SaveButton" name="save"/>
             <button class="HS\BannerSlider\Block\Adminhtml\SliderBanner\Edit\SaveAndContinueButton" name="save_and_continue"/>
         </buttons>
-        <namespace>hs_bannerslider_sliderbanner_form</namespace>
+        <namespace>hs_banner_slider_slider_banner_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>hs_bannerslider_sliderbanner_form.sliderbanner_form_data_source</dep>
+            <dep>hs_banner_slider_slider_banner_form.slider_banner_form_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="sliderbanner_form_data_source">
+    <dataSource name="slider_banner_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
@@ -29,10 +29,10 @@
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="HS\BannerSlider\Model\SliderBanner\DataProvider" name="sliderbanner_form_data_source">
+        <dataProvider class="HS\BannerSlider\Model\SliderBanner\DataProvider" name="slider_banner_form_data_source">
             <settings>
-                <requestFieldName>sliderbanner_id</requestFieldName>
-                <primaryFieldName>sliderbanner_id</primaryFieldName>
+                <requestFieldName>slider_banner_id</requestFieldName>
+                <primaryFieldName>slider_banner_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>

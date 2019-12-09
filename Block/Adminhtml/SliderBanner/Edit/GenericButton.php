@@ -38,7 +38,7 @@ abstract class GenericButton
      */
     public function getModelId()
     {
-        return $this->context->getRequest()->getParam('sliderbanner_id');
+        return $this->context->getRequest()->getParam('slider_banner_id');
     }
 
     /**

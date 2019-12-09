@@ -60,7 +60,7 @@ class Save extends \Magento\Backend\App\Action
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Banner.'));
-                $this->dataPersistor->clear('hs_bannerslider_banner');
+                $this->dataPersistor->clear('hs_banner_slider_banner');
 
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['banner_id' => $model->getId()]);
@@ -73,7 +73,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Banner.'));
             }
 
-            $this->dataPersistor->set('hs_bannerslider_banner', $data);
+            $this->dataPersistor->set('hs_banner_slider_banner', $data);
 
             return $resultRedirect->setPath('*/*/edit', ['banner_id' => $this->getRequest()->getParam('banner_id')]);
         }

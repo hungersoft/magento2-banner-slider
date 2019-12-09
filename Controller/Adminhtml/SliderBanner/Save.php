@@ -46,7 +46,7 @@ class Save extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
         if ($data) {
-            $id = $this->getRequest()->getParam('sliderbanner_id');
+            $id = $this->getRequest()->getParam('slider_banner_id');
 
             $model = $this->_objectManager->create(\HS\BannerSlider\Model\SliderBanner::class)->load($id);
             if (!$model->getId() && $id) {
@@ -60,10 +60,10 @@ class Save extends \Magento\Backend\App\Action
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Sliderbanner.'));
-                $this->dataPersistor->clear('hs_bannerslider_sliderbanner');
+                $this->dataPersistor->clear('hs_banner_slider_sliderbanner');
 
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['sliderbanner_id' => $model->getId()]);
+                    return $resultRedirect->setPath('*/*/edit', ['slider_banner_id' => $model->getId()]);
                 }
 
                 return $resultRedirect->setPath('*/*/');
@@ -73,9 +73,9 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Sliderbanner.'));
             }
 
-            $this->dataPersistor->set('hs_bannerslider_sliderbanner', $data);
+            $this->dataPersistor->set('hs_banner_slider_sliderbanner', $data);
 
-            return $resultRedirect->setPath('*/*/edit', ['sliderbanner_id' => $this->getRequest()->getParam('sliderbanner_id')]);
+            return $resultRedirect->setPath('*/*/edit', ['slider_banner_id' => $this->getRequest()->getParam('slider_banner_id')]);
         }
 
         return $resultRedirect->setPath('*/*/');

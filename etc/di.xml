@@ -5,16 +5,16 @@
     <preference for="HS\BannerSlider\Api\Data\BannerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
     <virtualType name="HS\BannerSlider\Model\ResourceModel\Banner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">hs_bannerslider_banner</argument>
+            <argument name="mainTable" xsi:type="string">hs_banner_slider_banner</argument>
             <argument name="resourceModel" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Banner\Collection</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="hs_bannerslider_banner_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Banner\Grid\Collection</item>
-                <item name="hs_bannerslider_slider_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Slider\Grid\Collection</item>
-                <item name="hs_bannerslider_sliderbanner_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\SliderBanner\Grid\Collection</item>
+                <item name="hs_banner_slider_banner_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Banner\Grid\Collection</item>
+                <item name="hs_banner_slider_slider_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Slider\Grid\Collection</item>
+                <item name="hs_banner_slider_slider_banner_listing_data_source" xsi:type="string">HS\BannerSlider\Model\ResourceModel\SliderBanner\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -23,7 +23,7 @@
     <preference for="HS\BannerSlider\Api\Data\SliderSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
     <virtualType name="HS\BannerSlider\Model\ResourceModel\Slider\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">hs_bannerslider_slider</argument>
+            <argument name="mainTable" xsi:type="string">hs_banner_slider_slider</argument>
             <argument name="resourceModel" xsi:type="string">HS\BannerSlider\Model\ResourceModel\Slider\Collection</argument>
         </arguments>
     </virtualType>
@@ -32,7 +32,7 @@
     <preference for="HS\BannerSlider\Api\Data\SliderBannerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
     <virtualType name="HS\BannerSlider\Model\ResourceModel\SliderBanner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">hs_bannerslider_sliderbanner</argument>
+            <argument name="mainTable" xsi:type="string">hs_banner_slider_slider_banner</argument>
             <argument name="resourceModel" xsi:type="string">HS\BannerSlider\Model\ResourceModel\SliderBanner\Collection</argument>
         </arguments>
     </virtualType>

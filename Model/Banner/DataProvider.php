@@ -67,13 +67,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         foreach ($items as $model) {
             $this->loadedData[$model->getId()] = $model->getData();
         }
-        $data = $this->dataPersistor->get('hs_bannerslider_banner');
+        $data = $this->dataPersistor->get('hs_banner_slider_banner');
 
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
-            $this->dataPersistor->clear('hs_bannerslider_banner');
+            $this->dataPersistor->clear('hs_banner_slider_banner');
         }
 
         return $this->loadedData;

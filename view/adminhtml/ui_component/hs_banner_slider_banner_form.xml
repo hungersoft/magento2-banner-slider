@@ -2,7 +2,7 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hs_bannerslider_banner_form.banner_form_data_source</item>
+            <item name="provider" xsi:type="string">hs_banner_slider_banner_form.banner_form_data_source</item>
         </item>
         <item name="label" translate="true" xsi:type="string">General Information</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -14,10 +14,10 @@
             <button class="HS\BannerSlider\Block\Adminhtml\Banner\Edit\SaveButton" name="save"/>
             <button class="HS\BannerSlider\Block\Adminhtml\Banner\Edit\SaveAndContinueButton" name="save_and_continue"/>
         </buttons>
-        <namespace>hs_bannerslider_banner_form</namespace>
+        <namespace>hs_banner_slider_banner_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>hs_bannerslider_banner_form.banner_form_data_source</dep>
+            <dep>hs_banner_slider_banner_form.banner_form_data_source</dep>
         </deps>
     </settings>
     <dataSource name="banner_form_data_source">
@@ -48,7 +48,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">name</label>
+                <label translate="true">Name</label>
                 <dataScope>name</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -63,7 +63,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">active</label>
+                <label translate="true">Active</label>
                 <dataScope>active</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -78,7 +78,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">description</label>
+                <label translate="true">Description</label>
                 <dataScope>description</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -93,7 +93,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">type</label>
+                <label translate="true">Type</label>
                 <dataScope>type</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -108,7 +108,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">desktop_image</label>
+                <label translate="true">Desktop Image</label>
                 <dataScope>desktop_image</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -138,7 +138,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">html</label>
+                <label translate="true">HTML</label>
                 <dataScope>html</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -153,7 +153,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">thumb</label>
+                <label translate="true">Thumb image</label>
                 <dataScope>thumb</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -168,7 +168,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">url</label>
+                <label translate="true">URL</label>
                 <dataScope>url</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -183,68 +183,8 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">open_new_window</label>
+                <label translate="true">Open in new window</label>
                 <dataScope>open_new_window</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="date" name="show_from" sortOrder="110">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">show_from</label>
-                <dataScope>show_from</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="date" name="show_to" sortOrder="120">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">show_to</label>
-                <dataScope>show_to</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="date" name="created_at" sortOrder="130">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">created_at</label>
-                <dataScope>created_at</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="date" name="updated_at" sortOrder="140">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">updated_at</label>
-                <dataScope>updated_at</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
                 </validation>

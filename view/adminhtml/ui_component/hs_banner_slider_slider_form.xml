@@ -2,7 +2,7 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hs_bannerslider_slider_form.slider_form_data_source</item>
+            <item name="provider" xsi:type="string">hs_banner_slider_slider_form.slider_form_data_source</item>
         </item>
         <item name="label" translate="true" xsi:type="string">General Information</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -14,10 +14,10 @@
             <button class="HS\BannerSlider\Block\Adminhtml\Slider\Edit\SaveButton" name="save"/>
             <button class="HS\BannerSlider\Block\Adminhtml\Slider\Edit\SaveAndContinueButton" name="save_and_continue"/>
         </buttons>
-        <namespace>hs_bannerslider_slider_form</namespace>
+        <namespace>hs_banner_slider_slider_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>hs_bannerslider_slider_form.slider_form_data_source</dep>
+            <dep>hs_banner_slider_slider_form.slider_form_data_source</dep>
         </deps>
     </settings>
     <dataSource name="slider_form_data_source">
@@ -48,7 +48,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">name</label>
+                <label translate="true">Name</label>
                 <dataScope>name</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -63,7 +63,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">active</label>
+                <label translate="true">Active</label>
                 <dataScope>active</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -78,7 +78,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">effect</label>
+                <label translate="true">Effect</label>
                 <dataScope>effect</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -93,7 +93,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">use_global_config</label>
+                <label translate="true">Use global config</label>
                 <dataScope>use_global_config</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -108,7 +108,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">responsive</label>
+                <label translate="true">Responsive</label>
                 <dataScope>responsive</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -123,7 +123,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">loop</label>
+                <label translate="true">Loop</label>
                 <dataScope>loop</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -138,7 +138,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">auto_width</label>
+                <label translate="true">Auto width</label>
                 <dataScope>auto_width</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -153,7 +153,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">auto_height</label>
+                <label translate="true">Auto height</label>
                 <dataScope>auto_height</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -168,7 +168,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">controls</label>
+                <label translate="true">Controls</label>
                 <dataScope>controls</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -183,7 +183,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">nav</label>
+                <label translate="true">Navigation</label>
                 <dataScope>nav</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -198,7 +198,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">nav_as_thumbnails</label>
+                <label translate="true">Nav as thumbnails</label>
                 <dataScope>nav_as_thumbnails</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -213,7 +213,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">nav_position</label>
+                <label translate="true">Nav position</label>
                 <dataScope>nav_position</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -228,7 +228,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">autoplay</label>
+                <label translate="true">Autoplay</label>
                 <dataScope>autoplay</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -243,7 +243,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">autoplay_timeout</label>
+                <label translate="true">Autoplay timeout</label>
                 <dataScope>autoplay_timeout</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -258,7 +258,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">autoplay_pause_on_hover</label>
+                <label translate="true">Autoplay pause on hover</label>
                 <dataScope>autoplay_pause_on_hover</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
@@ -273,7 +273,7 @@
             </argument>
             <settings>
                 <dataType>text</dataType>
-                <label translate="true">lazyload</label>
+                <label translate="true">Lazyload</label>
                 <dataScope>lazyload</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>

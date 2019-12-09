@@ -57,7 +57,7 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\Slider
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('hs_bannerslider_slider', $model);
+        $this->_coreRegistry->register('hs_banner_slider_slider', $model);
 
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

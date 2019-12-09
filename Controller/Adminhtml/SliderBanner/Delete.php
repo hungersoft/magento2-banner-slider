@@ -29,7 +29,7 @@ class Delete extends \HS\BannerSlider\Controller\Adminhtml\SliderBanner
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         // check if we know what should be deleted
-        $id = $this->getRequest()->getParam('sliderbanner_id');
+        $id = $this->getRequest()->getParam('slider_banner_id');
         if ($id) {
             try {
                 // init model and delete
@@ -44,7 +44,7 @@ class Delete extends \HS\BannerSlider\Controller\Adminhtml\SliderBanner
                 // display error message
                 $this->messageManager->addErrorMessage($e->getMessage());
                 // go back to edit form
-                return $resultRedirect->setPath('*/*/edit', ['sliderbanner_id' => $id]);
+                return $resultRedirect->setPath('*/*/edit', ['slider_banner_id' => $id]);
             }
         }
         // display error message

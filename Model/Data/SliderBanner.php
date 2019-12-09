@@ -22,7 +22,7 @@ use HS\BannerSlider\Api\Data\SliderBannerInterface;
 class SliderBanner extends \Magento\Framework\Api\AbstractExtensibleObject implements SliderBannerInterface
 {
     /**
-     * Get sliderbanner_id.
+     * Get slider_banner_id.
      *
      * @return string|null
      */
@@ -32,7 +32,7 @@ class SliderBanner extends \Magento\Framework\Api\AbstractExtensibleObject imple
     }
 
     /**
-     * Set sliderbanner_id.
+     * Set slider_banner_id.
      *
      * @param string $sliderbannerId
      *

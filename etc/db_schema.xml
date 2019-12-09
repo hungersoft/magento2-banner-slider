@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table comment="Hungersoft BannerSlider - Banners Table" engine="innodb" name="hs_banner_slider_banner" resource="default">
-        <column comment="Entity Id" identity="true" name="banner_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+        <column comment="Entity Id" identity="true" name="banner_id" nullable="false" unsigned="true" xsi:type="int"/>
         <constraint referenceId="PRIMARY" xsi:type="primary">
             <column name="banner_id"/>
         </constraint>
         <column length="255" name="name" nullable="false" xsi:type="varchar"/>
         <column default="1" name="active" nullable="false" xsi:type="boolean"/>
-        <column name="description" nullable="false" unsigned="true" xsi:type="text"/>
+        <column name="description" nullable="true" xsi:type="text"/>
         <column name="type" nullable="false" unsigned="true" xsi:type="smallint"/>
         <column length="255" name="desktop_image" nullable="true" xsi:type="varchar"/>
         <column name="html" nullable="true" xsi:type="text"/>
@@ -18,7 +18,7 @@
         <column name="updated_at" nullable="false" xsi:type="timestamp"/>
     </table>
     <table comment="Hungersoft BannerSlider - Slider Table" engine="innodb" name="hs_banner_slider_slider" resource="default">
-        <column comment="Entity Id" identity="true" name="slider_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+        <column comment="Entity Id" identity="true" name="slider_id" nullable="false" unsigned="true" xsi:type="int"/>
         <constraint referenceId="PRIMARY" xsi:type="primary">
             <column name="slider_id"/>
         </constraint>
@@ -26,7 +26,7 @@
         <column name="active" nullable="false" xsi:type="boolean"/>
         <column length="255" name="effect" nullable="true" xsi:type="varchar"/>
         <column default="1" name="use_global_config" nullable="false" xsi:type="boolean"/>
-        <column name="responsive" nullable="true" xsi:type="boolean"/>
+        <column name="responsive" nullable="true" xsi:type="boolean" default="1"/>
         <column name="loop" nullable="true" xsi:type="boolean"/>
         <column name="auto_width" nullable="true" xsi:type="boolean"/>
         <column name="auto_height" nullable="true" xsi:type="boolean"/>
@@ -36,15 +36,17 @@
         <column name="autoplay" nullable="true" xsi:type="boolean"/>
         <column name="autoplay_timeout" nullable="true" xsi:type="text"/>
         <column name="lazyload" nullable="true" xsi:type="boolean"/>
+        <column name="created_at" nullable="false" xsi:type="timestamp"/>
+        <column name="updated_at" nullable="false" xsi:type="timestamp"/>
     </table>
     <table comment="Hungersoft BannerSlider - Slider Banner Link Table" engine="innodb" name="hs_banner_slider_slider_banner" resource="default">
-        <column comment="Entity Id" identity="true" name="sliderbanner_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+        <column comment="Entity Id" identity="true" name="slider_banner_id" nullable="false" unsigned="true" xsi:type="int"/>
         <constraint referenceId="PRIMARY" xsi:type="primary">
-            <column name="sliderbanner_id"/>
+            <column name="slider_banner_id"/>
         </constraint>
         <column identity="false" name="slider_id" nullable="false" unsigned="true" xsi:type="int"/>
         <column identity="false" name="banner_id" nullable="false" unsigned="true" xsi:type="int"/>
         <constraint xsi:type="foreign" referenceId="HS_BANNER_SLIDER_SLIDER_BANNER_SLIDER_ID" table="hs_banner_slider_slider_banner" column="slider_id" referenceTable="hs_banner_slider_slider" referenceColumn="slider_id" onDelete="CASCADE"/>
-        <constraint xsi:type="foreign" referenceId="HS_BANNER_SLIDER_SLIDER_BANNER_BANNER_ID" table="hs_banner_slider_slider_banner" column="banner_id" referenceTable="hs_banner_slider_slider" referenceColumn="banner_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="HS_BANNER_SLIDER_SLIDER_BANNER_BANNER_ID" table="hs_banner_slider_slider_banner" column="banner_id" referenceTable="hs_banner_slider_banner" referenceColumn="banner_id" onDelete="CASCADE"/>
     </table>
 </schema>

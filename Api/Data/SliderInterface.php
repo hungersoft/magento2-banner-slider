@@ -292,4 +292,36 @@ interface SliderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \HS\BannerSlider\Api\Data\SliderInterface
      */
     public function setLazyload($lazyload);
+
+    /**
+     * Get created_at.
+     *
+     * @return string|null
+     */
+    public function getCreatedAt();
+
+    /**
+     * Set created_at.
+     *
+     * @param string $createdAt
+     *
+     * @return \HS\BannerSliderPro\Api\Data\SliderInterface
+     */
+    public function setCreatedAt($createdAt);
+
+    /**
+     * Get updated_at.
+     *
+     * @return string|null
+     */
+    public function getUpdatedAt();
+
+    /**
+     * Set updated_at.
+     *
+     * @param string $updatedAt
+     *
+     * @return \HS\BannerSliderPro\Api\Data\SliderInterface
+     */
+    public function setUpdatedAt($updatedAt);
 }

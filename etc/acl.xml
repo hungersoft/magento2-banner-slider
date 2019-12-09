@@ -20,7 +20,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="HS_BannerSlider::config_hs_bannerslider" title="Hungersoft Banner Slider"/>
+                            <resource id="HS_BannerSlider::config_hs_banner_slider" title="Hungersoft Banner Slider"/>
                         </resource>
                     </resource>
                 </resource>

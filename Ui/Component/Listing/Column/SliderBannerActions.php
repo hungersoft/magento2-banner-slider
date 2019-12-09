@@ -19,9 +19,9 @@ namespace HS\BannerSlider\Ui\Component\Listing\Column;
 
 class SliderBannerActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-    const URL_PATH_EDIT = 'hs_bannerslider/sliderbanner/edit';
-    const URL_PATH_DELETE = 'hs_bannerslider/sliderbanner/delete';
-    const URL_PATH_DETAILS = 'hs_bannerslider/sliderbanner/details';
+    const URL_PATH_EDIT = 'hs_banner_slider/sliderbanner/edit';
+    const URL_PATH_DELETE = 'hs_banner_slider/sliderbanner/delete';
+    const URL_PATH_DETAILS = 'hs_banner_slider/sliderbanner/details';
     protected $urlBuilder;
 
     /**
@@ -53,13 +53,13 @@ class SliderBannerActions extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
-                if (isset($item['sliderbanner_id'])) {
+                if (isset($item['slider_banner_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'sliderbanner_id' => $item['sliderbanner_id'],
+                                    'slider_banner_id' => $item['slider_banner_id'],
                                 ]
                             ),
                             'label' => __('Edit'),
@@ -68,7 +68,7 @@ class SliderBannerActions extends \Magento\Ui\Component\Listing\Columns\Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'sliderbanner_id' => $item['sliderbanner_id'],
+                                    'slider_banner_id' => $item['slider_banner_id'],
                                 ]
                             ),
                             'label' => __('Delete'),

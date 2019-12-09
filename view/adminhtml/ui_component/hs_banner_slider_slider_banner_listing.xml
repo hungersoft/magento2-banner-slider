@@ -2,13 +2,13 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_listing_data_source</item>
+            <item name="provider" xsi:type="string">hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_listing_data_source</item>
         </item>
     </argument>
     <settings>
-        <spinner>hs_bannerslider_sliderbanner_columns</spinner>
+        <spinner>hs_banner_slider_slider_banner_columns</spinner>
         <deps>
-            <dep>hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_listing_data_source</dep>
+            <dep>hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_listing_data_source</dep>
         </deps>
         <buttons>
             <button name="add">
@@ -18,15 +18,15 @@
             </button>
         </buttons>
     </settings>
-    <dataSource component="Magento_Ui/js/grid/provider" name="hs_bannerslider_sliderbanner_listing_data_source">
+    <dataSource component="Magento_Ui/js/grid/provider" name="hs_banner_slider_slider_banner_listing_data_source">
         <settings>
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>HS_BannerSlider::SliderBanner</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hs_bannerslider_sliderbanner_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hs_banner_slider_slider_banner_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
-                <primaryFieldName>sliderbanner_id</primaryFieldName>
+                <primaryFieldName>slider_banner_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -39,20 +39,20 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="hs_bannerslider_sliderbanner_columns">
+    <columns name="hs_banner_slider_slider_banner_columns">
         <settings>
             <editorConfig>
-                <param name="selectProvider" xsi:type="string">hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_columns.ids</param>
+                <param name="selectProvider" xsi:type="string">hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_columns.ids</param>
                 <param name="enabled" xsi:type="boolean">true</param>
-                <param name="indexField" xsi:type="string">sliderbanner_id</param>
+                <param name="indexField" xsi:type="string">slider_banner_id</param>
                 <param name="clientConfig" xsi:type="array">
-                    <item name="saveUrl" path="hs_bannerslider/SliderBanner/inlineEdit" xsi:type="url"/>
+                    <item name="saveUrl" path="hs_banner_slider/SliderBanner/inlineEdit" xsi:type="url"/>
                     <item name="validateBeforeSave" xsi:type="boolean">false</item>
                 </param>
             </editorConfig>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_listing.hs_bannerslider_sliderbanner_columns_editor</item>
+                    <item name="provider" xsi:type="string">hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_listing.hs_banner_slider_slider_banner_columns_editor</item>
                     <item name="target" xsi:type="string">startEdit</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -63,10 +63,10 @@
         </settings>
         <selectionsColumn name="ids">
             <settings>
-                <indexField>sliderbanner_id</indexField>
+                <indexField>slider_banner_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="sliderbanner_id">
+        <column name="slider_banner_id">
             <settings>
                 <filter>text</filter>
                 <sorting>asc</sorting>
@@ -87,7 +87,7 @@
         </column>
         <actionsColumn class="HS\BannerSlider\Ui\Component\Listing\Column\SliderBannerActions" name="actions">
             <settings>
-                <indexField>sliderbanner_id</indexField>
+                <indexField>slider_banner_id</indexField>
                 <resizeEnabled>false</resizeEnabled>
                 <resizeDefaultWidth>107</resizeDefaultWidth>
             </settings>

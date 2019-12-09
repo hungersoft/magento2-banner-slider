@@ -24,6 +24,6 @@ class Banner extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('hs_bannerslider_banner', 'banner_id');
+        $this->_init('hs_banner_slider_banner', 'banner_id');
     }
 }

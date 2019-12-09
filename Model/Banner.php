@@ -27,7 +27,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
 
     protected $bannerDataFactory;
 
-    protected $_eventPrefix = 'hs_bannerslider_banner';
+    protected $_eventPrefix = 'hs_banner_slider_banner';
 
     /**
      * @param \Magento\Framework\Model\Context                       $context

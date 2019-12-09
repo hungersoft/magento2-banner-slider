@@ -2,13 +2,13 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">hs_bannerslider_banner_listing.hs_bannerslider_banner_listing_data_source</item>
+            <item name="provider" xsi:type="string">hs_banner_slider_banner_listing.hs_banner_slider_banner_listing_data_source</item>
         </item>
     </argument>
     <settings>
-        <spinner>hs_bannerslider_banner_columns</spinner>
+        <spinner>hs_banner_slider_banner_columns</spinner>
         <deps>
-            <dep>hs_bannerslider_banner_listing.hs_bannerslider_banner_listing_data_source</dep>
+            <dep>hs_banner_slider_banner_listing.hs_banner_slider_banner_listing_data_source</dep>
         </deps>
         <buttons>
             <button name="add">
@@ -18,12 +18,12 @@
             </button>
         </buttons>
     </settings>
-    <dataSource component="Magento_Ui/js/grid/provider" name="hs_bannerslider_banner_listing_data_source">
+    <dataSource component="Magento_Ui/js/grid/provider" name="hs_banner_slider_banner_listing_data_source">
         <settings>
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>HS_BannerSlider::Banner</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hs_bannerslider_banner_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hs_banner_slider_banner_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>banner_id</primaryFieldName>
@@ -39,20 +39,20 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="hs_bannerslider_banner_columns">
+    <columns name="hs_banner_slider_banner_columns">
         <settings>
             <editorConfig>
-                <param name="selectProvider" xsi:type="string">hs_bannerslider_banner_listing.hs_bannerslider_banner_listing.hs_bannerslider_banner_columns.ids</param>
+                <param name="selectProvider" xsi:type="string">hs_banner_slider_banner_listing.hs_banner_slider_banner_listing.hs_banner_slider_banner_columns.ids</param>
                 <param name="enabled" xsi:type="boolean">true</param>
                 <param name="indexField" xsi:type="string">banner_id</param>
                 <param name="clientConfig" xsi:type="array">
-                    <item name="saveUrl" path="hs_bannerslider/Banner/inlineEdit" xsi:type="url"/>
+                    <item name="saveUrl" path="hs_banner_slider/Banner/inlineEdit" xsi:type="url"/>
                     <item name="validateBeforeSave" xsi:type="boolean">false</item>
                 </param>
             </editorConfig>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">hs_bannerslider_banner_listing.hs_bannerslider_banner_listing.hs_bannerslider_banner_columns_editor</item>
+                    <item name="provider" xsi:type="string">hs_banner_slider_banner_listing.hs_banner_slider_banner_listing.hs_banner_slider_banner_columns_editor</item>
                     <item name="target" xsi:type="string">startEdit</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -76,7 +76,7 @@
         <column name="name">
             <settings>
                 <filter>text</filter>
-                <label translate="true">name</label>
+                <label translate="true">Name</label>
                 <editor>
                     <editorType>text</editorType>
                     <validation>
@@ -95,19 +95,7 @@
         <column name="active">
             <settings>
                 <filter>text</filter>
-                <label translate="true">active</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="description">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">description</label>
+                <label translate="true">Active</label>
                 <editor>
                     <editorType>text</editorType>
                     <validation>
@@ -119,7 +107,7 @@
         <column name="type">
             <settings>
                 <filter>text</filter>
-                <label translate="true">type</label>
+                <label translate="true">Type</label>
                 <editor>
                     <editorType>text</editorType>
                     <validation>
@@ -131,93 +119,9 @@
         <column name="desktop_image">
             <settings>
                 <filter>text</filter>
-                <label translate="true">desktop_image</label>
+                <label translate="true">Image</label>
                 <editor>
                     <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="mobile_image">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">mobile_image</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="html">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">html</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="thumb">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">thumb</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="url">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">url</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="open_new_window">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">open_new_window</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="show_from">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">show_from</label>
-                <editor>
-                    <editorType>date</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="show_to">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">show_to</label>
-                <editor>
-                    <editorType>date</editorType>
                     <validation>
                         <rule name="required-entry" xsi:type="boolean">false</rule>
                     </validation>
@@ -227,7 +131,7 @@
         <column name="created_at">
             <settings>
                 <filter>text</filter>
-                <label translate="true">created_at</label>
+                <label translate="true">Created</label>
                 <editor>
                     <editorType>date</editorType>
                     <validation>
@@ -239,7 +143,7 @@
         <column name="updated_at">
             <settings>
                 <filter>text</filter>
-                <label translate="true">updated_at</label>
+                <label translate="true">Modified</label>
                 <editor>
                     <editorType>date</editorType>
                     <validation>

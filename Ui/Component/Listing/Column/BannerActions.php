@@ -19,9 +19,9 @@ namespace HS\BannerSlider\Ui\Component\Listing\Column;
 
 class BannerActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-    const URL_PATH_DETAILS = 'hs_bannerslider/banner/details';
-    const URL_PATH_EDIT = 'hs_bannerslider/banner/edit';
-    const URL_PATH_DELETE = 'hs_bannerslider/banner/delete';
+    const URL_PATH_DETAILS = 'hs_banner_slider/banner/details';
+    const URL_PATH_EDIT = 'hs_banner_slider/banner/edit';
+    const URL_PATH_DELETE = 'hs_banner_slider/banner/delete';
     protected $urlBuilder;
 
     /**

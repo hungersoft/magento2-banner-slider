@@ -24,6 +24,6 @@ class Slider extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('hs_bannerslider_slider', 'slider_id');
+        $this->_init('hs_banner_slider_slider', 'slider_id');
     }
 }

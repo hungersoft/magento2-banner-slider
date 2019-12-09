@@ -25,7 +25,7 @@ class SliderBanner extends \Magento\Framework\Model\AbstractModel
 {
     protected $dataObjectHelper;
 
-    protected $_eventPrefix = 'hs_bannerslider_sliderbanner';
+    protected $_eventPrefix = 'hs_banner_slider_sliderbanner';
     protected $sliderbannerDataFactory;
 
     /**

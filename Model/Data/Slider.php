@@ -374,4 +374,48 @@ class Slider extends AbstractExtensibleObject implements SliderInterface
     {
         return $this->setData(self::LAZYLOAD, $lazyload);
     }
+
+    /**
+     * Get created_at.
+     *
+     * @return string|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->_get(self::CREATED_AT);
+    }
+
+    /**
+     * Set created_at.
+     *
+     * @param string $createdAt
+     *
+     * @return \HS\BannerSliderPro\Api\Data\SliderInterface
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->setData(self::CREATED_AT, $createdAt);
+    }
+
+    /**
+     * Get updated_at.
+     *
+     * @return string|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->_get(self::UPDATED_AT);
+    }
+
+    /**
+     * Set updated_at.
+     *
+     * @param string $updatedAt
+     *
+     * @return \HS\BannerSliderPro\Api\Data\SliderInterface
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        return $this->setData(self::UPDATED_AT, $updatedAt);
+    }
 }

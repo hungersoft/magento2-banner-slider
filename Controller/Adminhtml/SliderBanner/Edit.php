@@ -43,7 +43,7 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\SliderBanner
     public function execute()
     {
         // 1. Get ID and create model
-        $id = $this->getRequest()->getParam('sliderbanner_id');
+        $id = $this->getRequest()->getParam('slider_banner_id');
         $model = $this->_objectManager->create(\HS\BannerSlider\Model\SliderBanner::class);
 
         // 2. Initial checking
@@ -57,7 +57,7 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\SliderBanner
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('hs_bannerslider_sliderbanner', $model);
+        $this->_coreRegistry->register('hs_banner_slider_sliderbanner', $model);
 
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
