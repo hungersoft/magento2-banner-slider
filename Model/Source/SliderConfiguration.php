@@ -15,23 +15,36 @@
  * limitations under the License.
  */
 
-namespace HS\BannerSlider\Helper;
+namespace HS\BannerSlider\Model\Source;
 
-use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\Data\ValueSourceInterface;
+use HS\BannerSlider\Helper\Data as BannerSliderHelper;
 
-class Data extends AbstractHelper
+/**
+ * Class StockConfiguration.
+ */
+class SliderConfiguration implements ValueSourceInterface
 {
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
+     * @var StockConfigurationInterface
      */
-    public function __construct(
-        \Magento\Framework\App\Helper\Context $context
-    ) {
-        parent::__construct($context);
+    private $helper;
+
+    /**
+     * @param BannerSliderHelper $helper
+     */
+    public function __construct(BannerSliderHelper $helper)
+    {
+        $this->helper = $helper;
     }
 
-    public function getDefaultConfigValue($field, $store = null)
+    /**
+     * {@inheritdoc}
+     */
+    public function getValue($name)
     {
-        return;
+        $value = $this->helper->getDefaultConfigValue($name);
+
+        return is_numeric($value) ? (float) $value : $value;
     }
 }

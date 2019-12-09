@@ -25,17 +25,26 @@
         <column length="255" name="name" nullable="false" xsi:type="varchar"/>
         <column name="active" nullable="false" xsi:type="boolean"/>
         <column length="255" name="effect" nullable="true" xsi:type="varchar"/>
-        <column default="1" name="use_global_config" nullable="false" xsi:type="boolean"/>
         <column name="responsive" nullable="true" xsi:type="boolean" default="1"/>
+        <column name="use_config_responsive" nullable="false" xsi:type="boolean" default="1"/>
         <column name="loop" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_loop" nullable="false" xsi:type="boolean" default="1"/>
         <column name="auto_width" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_auto_width" nullable="false" xsi:type="boolean" default="1"/>
         <column name="auto_height" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_auto_height" nullable="false" xsi:type="boolean" default="1"/>
         <column name="controls" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_controls" nullable="false" xsi:type="boolean" default="1"/>
         <column name="nav" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_nav" nullable="false" xsi:type="boolean" default="1"/>
         <column name="nav_as_thumbnails" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_nav_as_thumbnails" nullable="false" xsi:type="boolean" default="1"/>
         <column name="autoplay" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_autoplay" nullable="false" xsi:type="boolean" default="1"/>
         <column name="autoplay_timeout" nullable="true" xsi:type="text"/>
+        <column name="use_config_autoplay_timeout" nullable="false" xsi:type="boolean" default="1"/>
         <column name="lazyload" nullable="true" xsi:type="boolean"/>
+        <column name="use_config_lazyload" nullable="false" xsi:type="boolean" default="1"/>
         <column name="created_at" nullable="false" xsi:type="timestamp"/>
         <column name="updated_at" nullable="false" xsi:type="timestamp"/>
     </table>

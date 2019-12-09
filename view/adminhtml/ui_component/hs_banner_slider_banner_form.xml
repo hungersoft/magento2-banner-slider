@@ -50,9 +50,7 @@
                 <dataType>text</dataType>
                 <label translate="true">Name</label>
                 <dataScope>name</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>true</required>
             </settings>
         </field>
         <field formElement="checkbox" name="active" sortOrder="20">
@@ -65,10 +63,19 @@
                 <dataType>text</dataType>
                 <label translate="true">Active</label>
                 <dataScope>active</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>true</required>
             </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
         </field>
         <field formElement="textarea" name="description" sortOrder="30">
             <argument name="data" xsi:type="array">
@@ -80,9 +87,7 @@
                 <dataType>text</dataType>
                 <label translate="true">Description</label>
                 <dataScope>description</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>false</required>
             </settings>
         </field>
         <field formElement="input" name="type" sortOrder="40">
@@ -95,40 +100,37 @@
                 <dataType>text</dataType>
                 <label translate="true">Type</label>
                 <dataScope>type</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>true</required>
             </settings>
         </field>
-        <field formElement="input" name="desktop_image" sortOrder="50">
+        <field formElement="imageUploader" name="desktop_image" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Banner</item>
                 </item>
             </argument>
             <settings>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
                 <dataType>text</dataType>
                 <label translate="true">Desktop Image</label>
                 <dataScope>desktop_image</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>true</required>
             </settings>
-        </field>
-        <field formElement="input" name="mobile_image" sortOrder="60">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">mobile_image</label>
-                <dataScope>mobile_image</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>false</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="hs_banner_slider/banner/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <initialMediaGalleryOpenSubpath>hs_banner_slider</initialMediaGalleryOpenSubpath>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
         </field>
         <field formElement="textarea" name="html" sortOrder="70">
             <argument name="data" xsi:type="array">
@@ -140,25 +142,37 @@
                 <dataType>text</dataType>
                 <label translate="true">HTML</label>
                 <dataScope>html</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>false</required>
             </settings>
         </field>
-        <field formElement="input" name="thumb" sortOrder="80">
+        <field formElement="imageUploader" name="thumb" sortOrder="80">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Banner</item>
                 </item>
             </argument>
             <settings>
-                <dataType>text</dataType>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <dataType>string</dataType>
                 <label translate="true">Thumb image</label>
                 <dataScope>thumb</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>false</required>
             </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>false</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="hs_banner_slider/banner/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <initialMediaGalleryOpenSubpath>hs_banner_slider</initialMediaGalleryOpenSubpath>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
         </field>
         <field formElement="input" name="url" sortOrder="90">
             <argument name="data" xsi:type="array">
@@ -170,9 +184,7 @@
                 <dataType>text</dataType>
                 <label translate="true">URL</label>
                 <dataScope>url</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>false</required>
             </settings>
         </field>
         <field formElement="checkbox" name="open_new_window" sortOrder="100">
@@ -185,10 +197,19 @@
                 <dataType>text</dataType>
                 <label translate="true">Open in new window</label>
                 <dataScope>open_new_window</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
+                <required>false</required>
             </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
         </field>
     </fieldset>
 </form>
