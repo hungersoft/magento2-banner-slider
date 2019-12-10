@@ -45,6 +45,7 @@
         </constraint>
         <column identity="false" name="slider_id" nullable="false" unsigned="true" xsi:type="int"/>
         <column identity="false" name="banner_id" nullable="false" unsigned="true" xsi:type="int"/>
+        <column identity="false" name="position" nullable="false" default="0" unsigned="false" xsi:type="int"/>
         <constraint xsi:type="foreign" referenceId="HS_BANNER_SLIDER_SLIDER_BANNER_SLIDER_ID" table="hs_banner_slider_slider_banner" column="slider_id" referenceTable="hs_banner_slider_slider" referenceColumn="slider_id" onDelete="CASCADE"/>
         <constraint xsi:type="foreign" referenceId="HS_BANNER_SLIDER_SLIDER_BANNER_BANNER_ID" table="hs_banner_slider_slider_banner" column="banner_id" referenceTable="hs_banner_slider_banner" referenceColumn="banner_id" onDelete="CASCADE"/>
     </table>

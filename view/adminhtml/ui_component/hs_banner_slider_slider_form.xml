@@ -36,7 +36,7 @@
             </settings>
         </dataProvider>
     </dataSource>
-    <fieldset name="general">
+    <fieldset name="general" sortOrder="10">
         <settings>
             <label>General</label>
         </settings>
@@ -78,12 +78,6 @@
             </formElements>
         </field>
         <field name="effect" formElement="select" sortOrder="170">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="rawOptions" xsi:type="boolean">true</item>
-                    <item name="value" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                </item>
-            </argument>
             <settings>
                 <label translate="true">Effect</label>
                 <dataScope>effect</dataScope>
@@ -98,9 +92,10 @@
             </formElements>
         </field>
     </fieldset>
-    <fieldset name="slider">
+    <fieldset name="slider" sortOrder="20">
         <settings>
             <label>Slider</label>
+            <collapsible>true</collapsible>
         </settings>
         <container name="container_responsive" component="Magento_Ui/js/form/components/group" sortOrder="190">
             <field formElement="checkbox" name="responsive" sortOrder="190">
@@ -376,6 +371,17 @@
                     </checkbox>
                 </formElements>
             </field>
+        </container>
+    </fieldset>
+    <fieldset name="assign_banners" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Banners in Slider</label>
+        </settings>
+        <container name="assign_banners_container" sortOrder="160">
+            <htmlContent name="html_content">
+                <block name="gallery" class="HS\BannerSlider\Block\Adminhtml\Slider\AssignBanners"/>
+            </htmlContent>
         </container>
     </fieldset>
 </form>
