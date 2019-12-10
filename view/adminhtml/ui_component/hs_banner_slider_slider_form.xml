@@ -77,19 +77,31 @@
                 </checkbox>
             </formElements>
         </field>
-        <field formElement="input" name="effect" sortOrder="170">
+        <field name="effect" formElement="select" sortOrder="170">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Slider</item>
+                    <item name="rawOptions" xsi:type="boolean">true</item>
+                    <item name="value" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
                 </item>
             </argument>
             <settings>
-                <dataType>text</dataType>
                 <label translate="true">Effect</label>
                 <dataScope>effect</dataScope>
                 <required>true</required>
             </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="HS\BannerSlider\Model\Config\Source\Effects"/>
+                    </settings>
+                </select>
+            </formElements>
         </field>
+    </fieldset>
+    <fieldset name="slider">
+        <settings>
+            <label>Slider</label>
+        </settings>
         <container name="container_responsive" component="Magento_Ui/js/form/components/group" sortOrder="190">
             <field formElement="checkbox" name="responsive" sortOrder="190">
                 <argument name="data" xsi:type="array">
@@ -111,35 +123,6 @@
                                 <map name="true" xsi:type="string">1</map>
                             </valueMap>
                             <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
-            <field name="use_config_responsive" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">responsive</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_responsive</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.responsive</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.responsive:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
                         </settings>
                     </checkbox>
                 </formElements>
@@ -170,38 +153,9 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="use_config_loop" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">loop</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_loop</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.loop</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.loop:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </container>
         <container name="container_auto_width" component="Magento_Ui/js/form/components/group" sortOrder="210">
-            <field formElement="checkbox" name="loop" sortOrder="190">
+            <field formElement="checkbox" name="auto_width" sortOrder="190">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="source" xsi:type="string">Slider</item>
@@ -221,35 +175,6 @@
                                 <map name="true" xsi:type="string">1</map>
                             </valueMap>
                             <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
-            <field name="use_config_auto_width" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">auto_width</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_auto_width</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.auto_width</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.auto_width:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
                         </settings>
                     </checkbox>
                 </formElements>
@@ -280,35 +205,6 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="use_config_auto_height" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">auto_height</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_auto_height</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.auto_height</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.auto_height:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </container>
         <container name="container_controls" component="Magento_Ui/js/form/components/group" sortOrder="230">
             <field formElement="checkbox" name="controls" sortOrder="190">
@@ -331,35 +227,6 @@
                                 <map name="true" xsi:type="string">1</map>
                             </valueMap>
                             <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
-            <field name="use_config_controls" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">controls</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_controls</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.controls</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.controls:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
                         </settings>
                     </checkbox>
                 </formElements>
@@ -390,35 +257,6 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="use_config_nav" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">nav</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_nav</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.nav</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.nav:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </container>
         <container name="container_nav_as_thumbnails" component="Magento_Ui/js/form/components/group" sortOrder="250">
             <field formElement="checkbox" name="nav_as_thumbnails" sortOrder="190">
@@ -441,35 +279,6 @@
                                 <map name="true" xsi:type="string">1</map>
                             </valueMap>
                             <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
-            <field name="use_config_nav_as_thumbnails" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">nav_as_thumbnails</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_nav_as_thumbnails</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.nav_as_thumbnails</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.nav_as_thumbnails:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
                         </settings>
                     </checkbox>
                 </formElements>
@@ -500,35 +309,6 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="use_config_autoplay" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">autoplay</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_autoplay</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.autoplay</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.autoplay:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </container>
         <container name="container_autoplay_timeout" component="Magento_Ui/js/form/components/group" sortOrder="280">
             <field formElement="input" name="autoplay_timeout" sortOrder="280">
@@ -543,35 +323,6 @@
                     <dataScope>autoplay_timeout</dataScope>
                     <required>false</required>
                 </settings>
-            </field>
-            <field name="use_config_autoplay_timeout" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">autoplay_timeout</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_autoplay_timeout</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.autoplay_timeout</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.autoplay_timeout:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
             </field>
         </container>
         <container name="container_autoplay_pause_on_hover" component="Magento_Ui/js/form/components/group" sortOrder="290">
@@ -599,35 +350,6 @@
                     </checkbox>
                 </formElements>
             </field>
-            <field name="use_config_autoplay_pause_on_hover" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">autoplay_pause_on_hover</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_autoplay_pause_on_hover</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.autoplay_pause_on_hover</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.autoplay_pause_on_hover:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
         </container>
         <container name="container_lazyload" component="Magento_Ui/js/form/components/group" sortOrder="300">
             <field formElement="checkbox" name="lazyload" sortOrder="190">
@@ -650,35 +372,6 @@
                                 <map name="true" xsi:type="string">1</map>
                             </valueMap>
                             <prefer>toggle</prefer>
-                        </settings>
-                    </checkbox>
-                </formElements>
-            </field>
-            <field name="use_config_lazyload" component="HS_BannerSlider/js/components/use-config-settings" formElement="checkbox">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="value" xsi:type="string">1</item>
-                        <item name="valueFromConfig" xsi:type="object">HS\BannerSlider\Model\Source\SliderConfiguration</item>
-                        <item name="keyInConfiguration" xsi:type="string">lazyload</item>
-                    </item>
-                </argument>
-                <settings>
-                    <dataScope>use_config_lazyload</dataScope>
-                    <links>
-                        <link name="linkedValue">${$.provider}:data.lazyload</link>
-                    </links>
-                    <exports>
-                        <link name="checked">${$.parentName}.lazyload:disabled</link>
-                    </exports>
-                </settings>
-                <formElements>
-                    <checkbox class="HS\BannerSlider\Ui\Component\Slider\Form\Element\UseConfigSettings">
-                        <settings>
-                            <description translate="true">Use Config Settings</description>
-                            <valueMap>
-                                <map name="false" xsi:type="string">0</map>
-                                <map name="true" xsi:type="string">1</map>
-                            </valueMap>
                         </settings>
                     </checkbox>
                 </formElements>

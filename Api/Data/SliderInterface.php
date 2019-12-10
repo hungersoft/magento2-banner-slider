@@ -20,7 +20,6 @@ namespace HS\BannerSlider\Api\Data;
 interface SliderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
     const EFFECT = 'effect';
-    const USE_GLOBAL_CONFIG = 'use_global_config';
     const AUTOPLAY_TIMEOUT = 'autoplay_timeout';
     const AUTO_HEIGHT = 'auto_height';
     const NAV = 'nav';
@@ -116,22 +115,6 @@ interface SliderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \HS\BannerSlider\Api\Data\SliderInterface
      */
     public function setEffect($effect);
-
-    /**
-     * Get use_global_config.
-     *
-     * @return string|null
-     */
-    public function getUseGlobalConfig();
-
-    /**
-     * Set use_global_config.
-     *
-     * @param string $useGlobalConfig
-     *
-     * @return \HS\BannerSlider\Api\Data\SliderInterface
-     */
-    public function setUseGlobalConfig($useGlobalConfig);
 
     /**
      * Get responsive.

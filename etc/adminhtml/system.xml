@@ -13,59 +13,6 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
-            <group id="slider" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
-                <label>Slider</label>
-                <field id="responsive" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Responsive</label>
-                    <comment/>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="loop" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Enable loop</label>
-                    <comment>Run the slider infinitely in a loop</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="auto_width" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Auto width</label>
-                    <comment>The width of each slide will be its natural width and not one fixed width per slider</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="auto_height" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Auto height</label>
-                    <comment>The height of each slide will be its natural height and not one fixed height per slider</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="controls" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Show prev/next buttons</label>
-                    <comment/>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="nav" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Enable navigation</label>
-                    <comment>Show navigation dots</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="nav_as_thumbnails" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Show navigation as thumbnails</label>
-                    <comment>When navigation is enabled, enable thumbnails instead of dots navigation</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="autoplay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Autoplay</label>
-                    <comment>Automatically change slides.</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="autoplay_timeout" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
-                    <label>Autoplay timeout</label>
-                    <comment>
-                        Time between 2 autoplay slides change (in &quot;ms&quot;).</comment>
-                </field>
-                <field id="lazyload" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-                    <label>Lazyload images</label>
-                    <comment>Enables lazyloading images that are currently not viewed</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-            </group>
         </section>
     </system>
 </config>
