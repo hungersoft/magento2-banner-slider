@@ -90,18 +90,25 @@
                 <required>false</required>
             </settings>
         </field>
-        <field formElement="input" name="type" sortOrder="40">
+        <field name="type" formElement="select" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
+                    <item name="rawOptions" xsi:type="boolean">true</item>
+                    <item name="value" xsi:type="object">HS\BannerSlider\Model\Config\Source\Type</item>
                 </item>
             </argument>
             <settings>
-                <dataType>text</dataType>
                 <label translate="true">Type</label>
                 <dataScope>type</dataScope>
                 <required>true</required>
             </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="HS\BannerSlider\Model\Config\Source\Type"/>
+                    </settings>
+                </select>
+            </formElements>
         </field>
         <field formElement="imageUploader" name="desktop_image" sortOrder="50">
             <argument name="data" xsi:type="array">
