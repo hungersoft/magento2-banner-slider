@@ -123,16 +123,18 @@ class Banner extends Extended
         if ($this->getSlider()->getSliderId()) {
             $this->setDefaultFilter(['in_slider' => 1]);
         }
+
         $collection = $this->bannerFactory->create()->getCollection()->addFieldToSelect(
             'name'
         )->addFieldToSelect(
             'desktop_image'
         )->addFieldToSelect(
             'active'
-        )->getSelect()->joinLeft(
+        )->join(
             ['hbs_sb' => 'hs_banner_slider_slider_banner'],
             'main_table.banner_id = hbs_sb.banner_id AND slider_id='.(int) $this->getRequest()->getParam('id', 0)
         );
+
         // $storeId = (int)$this->getRequest()->getParam('store', 0);
         // if ($storeId > 0) {
         //     $collection->addStoreFilter($storeId);
@@ -187,7 +189,7 @@ class Banner extends Extended
                 'header' => __('Active'),
                 'index' => 'active',
                 'type' => 'options',
-                'options' => $this->yesno->toOptionArray(),
+                'options' => $this->yesno->toArray(),
             ]
         );
 
