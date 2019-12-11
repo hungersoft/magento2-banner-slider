@@ -41,8 +41,8 @@
     <!-- Image Uploader -->
     <virtualType name="HS\BannerSlider\Model\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
         <arguments>
-            <argument name="baseTmpPath" xsi:type="string">hs_banner_slider/tmp</argument>
-            <argument name="basePath" xsi:type="string">hs_banner_slider</argument>
+            <argument name="baseTmpPath" xsi:type="string">hs/banner_slider/tmp</argument>
+            <argument name="basePath" xsi:type="string">hs/banner_slider</argument>
             <argument name="allowedExtensions" xsi:type="array">
                 <item name="jpg" xsi:type="string">jpg</item>
                 <item name="jpeg" xsi:type="string">jpeg</item>
