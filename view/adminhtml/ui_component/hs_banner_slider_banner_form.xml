@@ -29,7 +29,7 @@
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="HS\BannerSlider\Model\Banner\DataProvider" name="banner_form_data_source">
+        <dataProvider class="HS\BannerSlider\Ui\DataProvider\Banner\DataProvider" name="banner_form_data_source">
             <settings>
                 <requestFieldName>banner_id</requestFieldName>
                 <primaryFieldName>banner_id</primaryFieldName>
@@ -132,7 +132,7 @@
                         </uploaderConfig>
                         <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
                         <openDialogTitle>Media Gallery</openDialogTitle>
-                        <initialMediaGalleryOpenSubpath>hs_banner_slider</initialMediaGalleryOpenSubpath>
+                        <initialMediaGalleryOpenSubpath>hs/banner_slider</initialMediaGalleryOpenSubpath>
                         <allowedExtensions>jpg jpeg gif png</allowedExtensions>
                         <maxFileSize>4194304</maxFileSize>
                     </settings>
@@ -174,7 +174,7 @@
                         </uploaderConfig>
                         <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
                         <openDialogTitle>Media Gallery</openDialogTitle>
-                        <initialMediaGalleryOpenSubpath>hs_banner_slider</initialMediaGalleryOpenSubpath>
+                        <initialMediaGalleryOpenSubpath>hs/banner_slider</initialMediaGalleryOpenSubpath>
                         <allowedExtensions>jpg jpeg gif png</allowedExtensions>
                         <maxFileSize>4194304</maxFileSize>
                     </settings>

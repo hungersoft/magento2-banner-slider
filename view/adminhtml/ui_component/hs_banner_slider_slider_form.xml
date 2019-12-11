@@ -29,7 +29,7 @@
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="HS\BannerSlider\Model\Slider\DataProvider" name="slider_form_data_source">
+        <dataProvider class="HS\BannerSlider\Ui\DataProvider\Slider\DataProvider" name="slider_form_data_source">
             <settings>
                 <requestFieldName>slider_id</requestFieldName>
                 <primaryFieldName>slider_id</primaryFieldName>
