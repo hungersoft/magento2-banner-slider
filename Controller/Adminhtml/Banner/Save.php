@@ -85,6 +85,14 @@ class Save extends \Magento\Backend\App\Action
         return $resultRedirect->setPath('*/*/');
     }
 
+    /**
+     * Set uploaded images to save data.
+     *
+     * @param array  $data
+     * @param string $fieldName
+     * 
+     * @return array
+     */
     protected function processImages($data, $fieldName)
     {
         if (isset($data[$fieldName][0]['name']) && isset($data[$fieldName][0]['tmp_name'])) {
