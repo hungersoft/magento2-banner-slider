@@ -1,0 +1,17 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="HS\BannerSlider\Ui\DataProvider\Banner\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="images" xsi:type="array">
+                    <item name="class" xsi:type="string">HS\BannerSlider\Ui\DataProvider\Banner\Form\Modifier\Images</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="HS\BannerSlider\Ui\DataProvider\Banner\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">HS\BannerSlider\Ui\DataProvider\Banner\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+</config>

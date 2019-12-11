@@ -15,12 +15,13 @@
  * limitations under the License.
  */
 
-namespace HS\BannerSlider\Model\Slider;
+namespace HS\BannerSlider\Ui\DataProvider\Slider;
 
 use HS\BannerSlider\Model\ResourceModel\Slider\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
     protected $collection;
 
