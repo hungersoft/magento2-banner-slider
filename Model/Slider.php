@@ -17,33 +17,39 @@
 
 namespace HS\BannerSlider\Model;
 
+use Magento\Framework\Registry;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Api\DataObjectHelper;
 use HS\BannerSlider\Api\Data\SliderInterface;
 use HS\BannerSlider\Api\Data\SliderInterfaceFactory;
+use HS\BannerSlider\Model\ResourceModel\Slider as ResourceSlider;
+use HS\BannerSlider\Model\ResourceModel\Slider\Collection as CollectionSlider;
 
-class Slider extends \Magento\Framework\Model\AbstractModel
+class Slider extends AbstractModel
 {
     protected $dataObjectHelper;
 
     protected $_eventPrefix = 'hs_banner_slider_slider';
+
     protected $sliderDataFactory;
 
     /**
-     * @param \Magento\Framework\Model\Context                       $context
-     * @param \Magento\Framework\Registry                            $registry
-     * @param SliderInterfaceFactory                                 $sliderDataFactory
-     * @param DataObjectHelper                                       $dataObjectHelper
-     * @param \HS\BannerSlider\Model\ResourceModel\Slider            $resource
-     * @param \HS\BannerSlider\Model\ResourceModel\Slider\Collection $resourceCollection
-     * @param array                                                  $data
+     * @param Context                $context
+     * @param Registry               $registry
+     * @param SliderInterfaceFactory $sliderDataFactory
+     * @param DataObjectHelper       $dataObjectHelper
+     * @param ResourceSlider         $resource
+     * @param CollectionSlider       $resourceCollection
+     * @param array                  $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         SliderInterfaceFactory $sliderDataFactory,
         DataObjectHelper $dataObjectHelper,
-        \HS\BannerSlider\Model\ResourceModel\Slider $resource,
-        \HS\BannerSlider\Model\ResourceModel\Slider\Collection $resourceCollection,
+        ResourceSlider $resource,
+        CollectionSlider $resourceCollection,
         array $data = []
     ) {
         $this->sliderDataFactory = $sliderDataFactory;
