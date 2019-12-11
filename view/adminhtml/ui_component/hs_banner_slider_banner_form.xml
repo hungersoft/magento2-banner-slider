@@ -50,7 +50,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Name</label>
                 <dataScope>name</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
         </field>
         <field formElement="checkbox" name="active" sortOrder="20">
@@ -63,7 +65,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Active</label>
                 <dataScope>active</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <checkbox>
@@ -93,14 +97,15 @@
         <field name="type" formElement="select" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="rawOptions" xsi:type="boolean">true</item>
                     <item name="value" xsi:type="object">HS\BannerSlider\Model\Config\Source\Type</item>
                 </item>
             </argument>
             <settings>
                 <label translate="true">Type</label>
                 <dataScope>type</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <select>
@@ -121,7 +126,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Desktop Image</label>
                 <dataScope>desktop_image</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <imageUploader>

@@ -50,7 +50,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Name</label>
                 <dataScope>name</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
         </field>
         <field formElement="checkbox" name="active" sortOrder="160">
@@ -63,7 +65,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Active</label>
                 <dataScope>active</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <checkbox>
@@ -81,7 +85,9 @@
             <settings>
                 <label translate="true">Effect</label>
                 <dataScope>effect</dataScope>
-                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <select>
