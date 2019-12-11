@@ -68,9 +68,9 @@
         </selectionsColumn>
         <column name="slider_id">
             <settings>
-                <filter>text</filter>
-                <sorting>asc</sorting>
+                <filter>textRange</filter>
                 <label translate="true">ID</label>
+                <sorting>asc</sorting>
             </settings>
         </column>
         <column name="name">
@@ -80,9 +80,37 @@
                 <editor>
                     <editorType>text</editorType>
                     <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
                     </validation>
                 </editor>
+            </settings>
+        </column>
+        <column name="active" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <label translate="true">Active</label>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Modified</label>
             </settings>
         </column>
         <actionsColumn class="HS\BannerSlider\Ui\Component\Listing\Column\SliderActions" name="actions">
@@ -92,41 +120,5 @@
                 <resizeDefaultWidth>107</resizeDefaultWidth>
             </settings>
         </actionsColumn>
-        <column name="active">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Active</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="created_at">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Created</label>
-                <editor>
-                    <editorType>date</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="updated_at">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Modified</label>
-                <editor>
-                    <editorType>date</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
     </columns>
 </listing>

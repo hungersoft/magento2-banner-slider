@@ -68,9 +68,9 @@
         </selectionsColumn>
         <column name="banner_id">
             <settings>
-                <filter>text</filter>
-                <sorting>asc</sorting>
+                <filter>textRange</filter>
                 <label translate="true">ID</label>
+                <sorting>asc</sorting>
             </settings>
         </column>
         <column name="name">
@@ -80,45 +80,41 @@
                 <editor>
                     <editorType>text</editorType>
                     <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
                     </validation>
                 </editor>
             </settings>
         </column>
-        <actionsColumn class="HS\BannerSlider\Ui\Component\Listing\Column\BannerActions" name="actions">
+        <column name="active" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <indexField>banner_id</indexField>
-                <resizeEnabled>false</resizeEnabled>
-                <resizeDefaultWidth>107</resizeDefaultWidth>
-            </settings>
-        </actionsColumn>
-        <column name="active">
-            <settings>
-                <filter>text</filter>
                 <label translate="true">Active</label>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
                 <editor>
-                    <editorType>text</editorType>
+                    <editorType>select</editorType>
                     <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
                     </validation>
                 </editor>
+                <dataType>select</dataType>
             </settings>
         </column>
-        <column name="type">
+        <column name="type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <filter>text</filter>
                 <label translate="true">Type</label>
+                <options class="HS\BannerSlider\Model\Config\Source\Type"/>
+                <filter>select</filter>
                 <editor>
-                    <editorType>text</editorType>
+                    <editorType>select</editorType>
                     <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
                     </validation>
                 </editor>
+                <dataType>select</dataType>
             </settings>
         </column>
-        <column name="desktop_image">
+        <column name="desktop_image" class="HS\BannerSlider\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail">
             <settings>
-                <filter>text</filter>
                 <label translate="true">Image</label>
                 <editor>
                     <editorType>text</editorType>
@@ -130,27 +126,24 @@
         </column>
         <column name="created_at">
             <settings>
-                <filter>text</filter>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
                 <label translate="true">Created</label>
-                <editor>
-                    <editorType>date</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
             </settings>
         </column>
         <column name="updated_at">
             <settings>
-                <filter>text</filter>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
                 <label translate="true">Modified</label>
-                <editor>
-                    <editorType>date</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
             </settings>
         </column>
+        <actionsColumn class="HS\BannerSlider\Ui\Component\Listing\Column\BannerActions" name="actions">
+            <settings>
+                <indexField>banner_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
