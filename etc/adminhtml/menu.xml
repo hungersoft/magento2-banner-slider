@@ -12,7 +12,7 @@
         <add
             id="HS_BannerSlider::hs_banner_slider_banner"
             module="HS_BannerSlider"
-            title="Banner(s)"
+            title="Banners"
             parent="HS_BannerSlider::banner_slider"
             sortOrder="700"
             action="hs_banner_slider/banner/index"
@@ -21,7 +21,7 @@
         <add
             id="HS_BannerSlider::hs_banner_slider_slider"
             module="HS_BannerSlider"
-            title="Slider(s)"
+            title="Sliders"
             parent="HS_BannerSlider::banner_slider"
             sortOrder="800"
             action="hs_banner_slider/slider/index"
