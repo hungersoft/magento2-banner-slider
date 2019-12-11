@@ -8,14 +8,14 @@
         <column length="255" name="name" nullable="false" xsi:type="varchar"/>
         <column default="1" name="active" nullable="false" xsi:type="boolean"/>
         <column name="description" nullable="true" xsi:type="text"/>
-        <column name="type" nullable="false" unsigned="true" xsi:type="smallint"/>
+        <column name="type" nullable="false" default="image" xsi:type="varchar"/>
         <column length="255" name="desktop_image" nullable="true" xsi:type="varchar"/>
         <column name="html" nullable="true" xsi:type="text"/>
         <column length="255" name="thumb" nullable="true" xsi:type="varchar"/>
         <column length="255" name="url" nullable="true" xsi:type="varchar"/>
         <column name="open_new_window" nullable="true" xsi:type="boolean"/>
-        <column name="created_at" nullable="false" xsi:type="timestamp"/>
-        <column name="updated_at" nullable="false" xsi:type="timestamp"/>
+        <column name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" xsi:type="timestamp"/>
+        <column name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" xsi:type="timestamp"/>
     </table>
     <table comment="Hungersoft BannerSlider - Slider Table" engine="innodb" name="hs_banner_slider_slider" resource="default">
         <column comment="Entity Id" identity="true" name="slider_id" nullable="false" unsigned="true" xsi:type="int"/>
@@ -35,8 +35,8 @@
         <column name="autoplay" nullable="true" xsi:type="boolean"/>
         <column name="autoplay_timeout" nullable="true" xsi:type="text"/>
         <column name="lazyload" nullable="true" xsi:type="boolean"/>
-        <column name="created_at" nullable="false" xsi:type="timestamp"/>
-        <column name="updated_at" nullable="false" xsi:type="timestamp"/>
+        <column name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" xsi:type="timestamp"/>
+        <column name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" xsi:type="timestamp"/>
     </table>
     <table comment="Hungersoft BannerSlider - Slider Banner Link Table" engine="innodb" name="hs_banner_slider_slider_banner" resource="default">
         <column comment="Entity Id" identity="true" name="slider_banner_id" nullable="false" unsigned="true" xsi:type="int"/>
