@@ -1,13 +1,13 @@
 <?php
 /**
  * Copyright 2019 Hungersoft (http://www.hungersoft.com).
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,22 +17,38 @@
 
 namespace HS\BannerSlider\Controller\Adminhtml\Slider;
 
-class Edit extends \HS\BannerSlider\Controller\Adminhtml\Slider
+use HS\BannerSlider\Controller\Adminhtml\Slider;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
+use HS\BannerSlider\Model\SliderFactory;
+
+class Edit extends Slider
 {
-    protected $resultPageFactory;
+    /**
+     * @var PageFactory
+     */
+    private $resultPageFactory;
 
     /**
-     * @param \Magento\Backend\App\Action\Context        $context
-     * @param \Magento\Framework\Registry                $coreRegistry
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @var SliderFactory
+     */
+    private $sliderFactory;
+
+    /**
+     * @param Context     $context
+     * @param Registry    $registry
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Registry $coreRegistry,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        Registry $registry,
+        PageFactory $resultPageFactory,
+        SliderFactory $sliderFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
-        parent::__construct($context, $coreRegistry);
+        $this->sliderFactory = $sliderFactory;
+        parent::__construct($context, $registry);
     }
 
     /**
@@ -42,14 +58,12 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\Slider
      */
     public function execute()
     {
-        // 1. Get ID and create model
         $id = $this->getRequest()->getParam('slider_id');
-        $model = $this->_objectManager->create(\HS\BannerSlider\Model\Slider::class);
+        $slider = $this->sliderFactory->create();
 
-        // 2. Initial checking
         if ($id) {
-            $model->load($id);
-            if (!$model->getId()) {
+            $slider->load($id);
+            if (!$slider->getSliderId()) {
                 $this->messageManager->addErrorMessage(__('This Slider no longer exists.'));
                 /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
@@ -57,9 +71,8 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\Slider
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('hs_banner_slider_slider', $model);
+        $this->registry->register('hs_banner_slider_slider', $slider);
 
-        // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $this->initPage($resultPage)->addBreadcrumb(
@@ -67,7 +80,9 @@ class Edit extends \HS\BannerSlider\Controller\Adminhtml\Slider
             $id ? __('Edit Slider') : __('New Slider')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Sliders'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Slider %1', $model->getId()) : __('New Slider'));
+        $resultPage->getConfig()->getTitle()->prepend(
+            $slider->getSliderId() ? __('Edit Slider %1', $slider->getSliderId()) : __('New Slider')
+        );
 
         return $resultPage;
     }
