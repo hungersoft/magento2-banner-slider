@@ -20,6 +20,8 @@ namespace HS\BannerSlider\Model\ResourceModel;
 use HS\BannerSlider\Model\Slider as SliderModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Model\ResourceModel\Db\Context;
 
 class Slider extends AbstractDb
 {
@@ -31,6 +33,27 @@ class Slider extends AbstractDb
     protected $sliderBannersTable;
 
     /**
+     * Core event manager proxy.
+     *
+     * @var ManagerInterface
+     */
+    protected $eventManager = null;
+
+    /**
+     * @param Context          $context
+     * @param ManagerInterface $eventManager
+     * @param string           $connectionName
+     */
+    public function __construct(
+        Context $context,
+        ManagerInterface $eventManager,
+        $connectionName = null
+    ) {
+        $this->eventManager = $eventManager;
+        parent::__construct($context, $connectionName);
+    }
+
+    /**
      * Define resource model.
      */
     protected function _construct()
@@ -39,7 +62,7 @@ class Slider extends AbstractDb
     }
 
     /**
-     * Category product table name getter.
+     * Slider banner table name getter.
      *
      * @return string
      */
@@ -55,7 +78,7 @@ class Slider extends AbstractDb
     /**
      * Get positions of associated to slider banners.
      *
-     * @param SliderModel $category
+     * @param SliderModel $slider
      *
      * @return array
      */
@@ -108,7 +131,7 @@ class Slider extends AbstractDb
         $banners = $slider->getPostedBanners();
 
         /*
-         * Example re-save category
+         * Example re-save slider
          */
         if ($banners === null) {
             return $this;
@@ -151,6 +174,7 @@ class Slider extends AbstractDb
                     'position' => (int) $position,
                 ];
             }
+
             $connection->insertMultiple($this->getSliderBannersTable(), $data);
         }
 
@@ -175,8 +199,8 @@ class Slider extends AbstractDb
         }
 
         if (!empty($insert) || !empty($delete)) {
-            $productIds = array_unique(array_merge(array_keys($insert), array_keys($delete)));
-            $this->_eventManager->dispatch(
+            $bannerIds = array_unique(array_merge(array_keys($insert), array_keys($delete)));
+            $this->eventManager->dispatch(
                 'hs_banner_slider_slider_banner_change_banners',
                 ['slider' => $slider, 'banner_ids' => $bannerIds]
             );
