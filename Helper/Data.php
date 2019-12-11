@@ -17,6 +17,8 @@
 
 namespace HS\BannerSlider\Helper;
 
+use Magento\Store\Model\Store;
+use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\StoreManagerInterface;
@@ -25,6 +27,13 @@ use Magento\Framework\App\Helper\AbstractHelper;
 class Data extends AbstractHelper
 {
     const CONFIG_ENABLED = 'hs_banner_slider/general/enabled';
+
+    /**
+     * Product labels media directory path.
+     *
+     * @var string
+     */
+    protected $mediaDir = '/hs/banner_slider';
 
     /**
      * Currently selected store ID if applicable.
@@ -42,9 +51,10 @@ class Data extends AbstractHelper
      * @param Context               $context
      * @param StoreManagerInterface $storeManager
      */
-    public function __construct(Context $context, StoreManagerInterface $storeManager)
+    public function __construct(Context $context, StoreManagerInterface $storeManager, Store $store)
     {
         $this->storeManager = $storeManager;
+        $this->store = $store;
         parent::__construct($context);
     }
 
@@ -80,5 +90,21 @@ class Data extends AbstractHelper
     public function isEnabled()
     {
         return $this->getConfigFlag(self::CONFIG_ENABLED);
+    }
+
+    /**
+     * Retrieves absolute image url.
+     *
+     * @param $path
+     *
+     * @return string
+     */
+    public function getImageUrl($path)
+    {
+        if (false === strpos($path, $this->mediaDir)) {
+            $path = $this->mediaDir.'/'.$path;
+        }
+
+        return $this->store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA).$path;
     }
 }
