@@ -17,20 +17,26 @@
 
 namespace HS\BannerSlider\Controller\Adminhtml\Slider;
 
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Request\DataPersistorInterface;
 
-class Save extends \Magento\Backend\App\Action
+class Save extends Action
 {
-    protected $dataPersistor;
+    /**
+     * @var DataPersistorInterface
+     */
+    private $dataPersistor;
 
     /**
-     * @param \Magento\Backend\App\Action\Context                   $context
-     * @param \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
+     * [__construct description].
+     *
+     * @param Context                $context
+     * @param DataPersistorInterface $dataPersistor
      */
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
-    ) {
+    public function __construct(Context $context, DataPersistorInterface $dataPersistor)
+    {
         $this->dataPersistor = $dataPersistor;
         parent::__construct($context);
     }
@@ -58,7 +64,7 @@ class Save extends \Magento\Backend\App\Action
             $slider->setData($data);
             if (isset($data['slider_banners'])
                 && is_string($data['slider_banners'])
-                && !$category->getBannersReadonly()
+                && !$slider->getBannersReadonly()
             ) {
                 $banners = json_decode($data['slider_banners'], true);
                 $slider->setPostedBanners($banners);
