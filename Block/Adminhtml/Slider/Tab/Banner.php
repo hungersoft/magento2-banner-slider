@@ -30,18 +30,19 @@ use Magento\Framework\App\ObjectManager;
 use HS\BannerSlider\Model\BannerFactory;
 use Magento\Backend\Helper\Data as BackendHelper;
 use Magento\Backend\Block\Template\Context;
+use HS\BannerSlider\Block\Adminhtml\Slider\Tab\Render\Image;
 
 class Banner extends Extended
 {
     /**
      * Core registry.
      *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry = null;
 
     /**
-     * @var \Magento\Catalog\Model\ProductFactory
+     * @var BannerFactory
      */
     protected $bannerFactory;
 
@@ -97,16 +98,16 @@ class Banner extends Extended
      */
     protected function _addColumnFilterToCollection($column)
     {
-        // Set custom filter for in category flag
+        // Set custom filter for in slider flag
         if ($column->getId() == 'in_slider') {
             $bannerIds = $this->_getSelectedBanners();
             if (empty($bannerIds)) {
                 $bannerIds = 0;
             }
             if ($column->getFilter()->getValue()) {
-                $this->getCollection()->addFieldToFilter('banner_id', ['in' => $bannerIds]);
+                $this->getCollection()->addFieldToFilter('main_table.banner_id', ['in' => $bannerIds]);
             } elseif (!empty($bannerIds)) {
-                $this->getCollection()->addFieldToFilter('banner_id', ['nin' => $bannerIds]);
+                $this->getCollection()->addFieldToFilter('main_table.banner_id', ['nin' => $bannerIds]);
             }
         } else {
             parent::_addColumnFilterToCollection($column);
@@ -124,21 +125,13 @@ class Banner extends Extended
             $this->setDefaultFilter(['in_slider' => 1]);
         }
 
-        $collection = $this->bannerFactory->create()->getCollection()->addFieldToSelect(
-            'name'
-        )->addFieldToSelect(
-            'desktop_image'
-        )->addFieldToSelect(
-            'active'
-        )->join(
-            ['hbs_sb' => 'hs_banner_slider_slider_banner'],
-            'main_table.banner_id = hbs_sb.banner_id AND slider_id='.(int) $this->getRequest()->getParam('id', 0)
+        $collection = $this->bannerFactory->create()->getCollection();
+        $collection->getSelect()->joinLeft(
+            ['hbs_sb' => $collection->getTable('hs_banner_slider_slider_banner')],
+            'main_table.banner_id = hbs_sb.banner_id AND hbs_sb.slider_id='.(int) $this->getRequest()->getParam('slider_id', 0),
+            ['position']
         );
 
-        // $storeId = (int)$this->getRequest()->getParam('store', 0);
-        // if ($storeId > 0) {
-        //     $collection->addStoreFilter($storeId);
-        // }
         $this->setCollection($collection);
 
         if ($this->getSlider()->getBannersReadonly()) {
@@ -159,10 +152,10 @@ class Banner extends Extended
     {
         if (!$this->getSlider()->getBannersReadonly()) {
             $this->addColumn(
-                'in_banner',
+                'in_slider',
                 [
                     'type' => 'checkbox',
-                    'name' => 'in_banner',
+                    'name' => 'in_slider',
                     'values' => $this->_getSelectedBanners(),
                     'index' => 'banner_id',
                     'header_css_class' => 'col-select col-massaction',
@@ -182,6 +175,15 @@ class Banner extends Extended
         );
 
         $this->addColumn('name', ['header' => __('Name'), 'index' => 'name']);
+
+        $this->addColumn(
+            'desktop_image',
+            [
+                'header' => __('Image'),
+                'index' => 'desktop_image',
+                'renderer' => Image::class,
+            ]
+        );
 
         $this->addColumn(
             'active',
