@@ -1,13 +1,13 @@
 <?php
 /**
  * Copyright 2019 Hungersoft (http://www.hungersoft.com).
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -55,6 +55,10 @@ class Save extends \Magento\Backend\App\Action
                 return $resultRedirect->setPath('*/*/');
             }
 
+            foreach (['desktop_image', 'mobile_image', 'thumb'] as $field) {
+                $data = $this->processImages($data, $field);
+            }
+
             $model->setData($data);
 
             try {
@@ -79,5 +83,22 @@ class Save extends \Magento\Backend\App\Action
         }
 
         return $resultRedirect->setPath('*/*/');
+    }
+
+    protected function processImages($data, $fieldName)
+    {
+        if (isset($data[$fieldName][0]['name']) && isset($data[$fieldName][0]['tmp_name'])) {
+            $data[$fieldName] = $data[$fieldName][0]['name'];
+            $this->imageUploader = \Magento\Framework\App\ObjectManager::getInstance()->get(
+                'HS\BannerSlider\Model\ImageUploader'
+            );
+            $this->imageUploader->moveFileFromTmp($data[$fieldName]);
+        } elseif (isset($data[$fieldName][0]['name']) && !isset($data[$fieldName][0]['tmp_name'])) {
+            $data[$fieldName] = $data[$fieldName][0]['name'];
+        } else {
+            $data[$fieldName] = null;
+        }
+
+        return $data;
     }
 }
