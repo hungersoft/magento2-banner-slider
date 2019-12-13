@@ -17,21 +17,47 @@
 
 namespace HS\BannerSlider\Controller\Adminhtml\Banner;
 
+use Exception;
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Request\DataPersistorInterface;
+use HS\BannerSlider\Model\BannerFactory;
+use Magento\Catalog\Model\ImageUploader;
 
-class Save extends \Magento\Backend\App\Action
+class Save extends Action
 {
-    protected $dataPersistor;
+    /**
+     * @var DataPersistorInterface
+     */
+    private $dataPersistor;
 
     /**
-     * @param \Magento\Backend\App\Action\Context                   $context
-     * @param \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
+     * @var BannerFactory
+     */
+    private $bannerFactory;
+
+    /**
+     * @var ImageUploader
+     */
+    private $imageUploader;
+
+    /**
+     * @param Context                $context
+     * @param DataPersistorInterface $dataPersistor
+     * @param BannerFactory          $bannerFactory
+     * @param ImageUploader          $imageUploader
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
+        Context $context,
+        DataPersistorInterface $dataPersistor,
+        BannerFactory $bannerFactory,
+        ImageUploader $imageUploader
     ) {
+        $this->bannerFactory = $bannerFactory;
         $this->dataPersistor = $dataPersistor;
+        $this->imageUploder = $imageUploader;
+
         parent::__construct($context);
     }
 
@@ -47,9 +73,8 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('banner_id');
-
-            $model = $this->_objectManager->create(\HS\BannerSlider\Model\Banner::class)->load($id);
-            if (!$model->getId() && $id) {
+            $banner = $this->bannerFactory->create()->load($id);
+            if (!$banner->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Banner no longer exists.'));
 
                 return $resultRedirect->setPath('*/*/');
@@ -59,21 +84,21 @@ class Save extends \Magento\Backend\App\Action
                 $data = $this->processImages($data, $field);
             }
 
-            $model->setData($data);
+            $banner->setData($data);
 
             try {
-                $model->save();
+                $banner->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Banner.'));
                 $this->dataPersistor->clear('hs_banner_slider_banner');
 
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['banner_id' => $model->getId()]);
+                    return $resultRedirect->setPath('*/*/edit', ['banner_id' => $banner->getBannerId()]);
                 }
 
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Banner.'));
             }
 
@@ -90,16 +115,13 @@ class Save extends \Magento\Backend\App\Action
      *
      * @param array  $data
      * @param string $fieldName
-     * 
+     *
      * @return array
      */
     protected function processImages($data, $fieldName)
     {
         if (isset($data[$fieldName][0]['name']) && isset($data[$fieldName][0]['tmp_name'])) {
             $data[$fieldName] = $data[$fieldName][0]['name'];
-            $this->imageUploader = \Magento\Framework\App\ObjectManager::getInstance()->get(
-                'HS\BannerSlider\Model\ImageUploader'
-            );
             $this->imageUploader->moveFileFromTmp($data[$fieldName]);
         } elseif (isset($data[$fieldName][0]['name']) && !isset($data[$fieldName][0]['tmp_name'])) {
             $data[$fieldName] = $data[$fieldName][0]['name'];

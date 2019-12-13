@@ -17,7 +17,6 @@
 
 namespace HS\BannerSlider\Ui\Component\Listing\Column;
 
-use Magento\Catalog\Helper\Image;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -25,8 +24,6 @@ use HS\BannerSlider\Helper\Data as BannerSliderHelper;
 
 class Thumbnail extends Column
 {
-    const ALT_FIELD = 'title';
-
     /**
      * @var BannerSliderHelper
      */
@@ -35,7 +32,6 @@ class Thumbnail extends Column
     /**
      * @param ContextInterface   $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param Image              $imageHelper
      * @param BannerSliderHelper $helper
      * @param array              $components
      * @param array              $data
@@ -43,12 +39,10 @@ class Thumbnail extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        Image $imageHelper,
         BannerSliderHelper $helper,
         array $components = [],
         array $data = []
     ) {
-        $this->imageHelper = $imageHelper;
         $this->helper = $helper;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
