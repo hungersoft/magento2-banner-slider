@@ -17,6 +17,8 @@
 
 namespace HS\BannerSlider\Model\ResourceModel\Slider;
 
+use HS\BannerSlider\Model\Slider as ModelSlider;
+use HS\BannerSlider\Model\ResourceModel\Slider as ResourceSlider;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
@@ -26,9 +28,6 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(
-            \HS\BannerSlider\Model\Slider::class,
-            \HS\BannerSlider\Model\ResourceModel\Slider::class
-        );
+        $this->_init(ModelSlider::class, ResourceSlider::class);
     }
 }

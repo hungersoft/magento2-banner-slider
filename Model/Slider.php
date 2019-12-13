@@ -28,11 +28,17 @@ use HS\BannerSlider\Model\ResourceModel\Slider\Collection as CollectionSlider;
 
 class Slider extends AbstractModel
 {
-    protected $dataObjectHelper;
+    /**
+     * @var DataObjectHelper
+     */
+    private $dataObjectHelper;
+
+    /**
+     * @var SliderInterfaceFactory
+     */
+    protected $sliderDataFactory;
 
     protected $_eventPrefix = 'hs_banner_slider_slider';
-
-    protected $sliderDataFactory;
 
     /**
      * @param Context                $context

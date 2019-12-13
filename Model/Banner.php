@@ -1,13 +1,13 @@
 <?php
 /**
  * Copyright 2019 Hungersoft (http://www.hungersoft.com).
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,34 +17,44 @@
 
 namespace HS\BannerSlider\Model;
 
-use HS\BannerSlider\Api\Data\BannerInterfaceFactory;
-use HS\BannerSlider\Api\Data\BannerInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\Model\Context;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Model\AbstractModel;
+use HS\BannerSlider\Api\Data\BannerInterfaceFactory;
+use HS\BannerSlider\Model\ResourceModel\Banner as ResourceBanner;
+use HS\BannerSlider\Model\ResourceModel\Banner\Collection as CollectionBanner;
 
-class Banner extends \Magento\Framework\Model\AbstractModel
+class Banner extends AbstractModel
 {
-    protected $dataObjectHelper;
+    /**
+     * @var DataObjectHelper
+     */
+    private $dataObjectHelper;
 
-    protected $bannerDataFactory;
+    /**
+     * @var BannerInterfaceFactory
+     */
+    private $bannerDataFactory;
 
     protected $_eventPrefix = 'hs_banner_slider_banner';
 
     /**
-     * @param \Magento\Framework\Model\Context                       $context
-     * @param \Magento\Framework\Registry                            $registry
-     * @param BannerInterfaceFactory                                 $bannerDataFactory
-     * @param DataObjectHelper                                       $dataObjectHelper
-     * @param \HS\BannerSlider\Model\ResourceModel\Banner            $resource
-     * @param \HS\BannerSlider\Model\ResourceModel\Banner\Collection $resourceCollection
-     * @param array                                                  $data
+     * @param Context                $context
+     * @param Registry               $registry
+     * @param BannerInterfaceFactory $bannerDataFactory
+     * @param DataObjectHelper       $dataObjectHelper
+     * @param ResourceBanner         $resource
+     * @param CollectionBanner       $resourceCollection
+     * @param array                  $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         BannerInterfaceFactory $bannerDataFactory,
         DataObjectHelper $dataObjectHelper,
-        \HS\BannerSlider\Model\ResourceModel\Banner $resource,
-        \HS\BannerSlider\Model\ResourceModel\Banner\Collection $resourceCollection,
+        ResourceBanner $resource,
+        CollectionBanner $resourceCollection,
         array $data = []
     ) {
         $this->bannerDataFactory = $bannerDataFactory;
