@@ -106,6 +106,63 @@
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>image</value>
+                            <actions>
+                                <action name="0">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.desktop_image</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">true</param>
+                                    </params>
+                                </action>
+                                <action name="1">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.thumb</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">true</param>
+                                    </params>
+                                </action>
+                                <action name="2">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.html</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">false</param>
+                                    </params>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>advanced</value>
+                            <actions>
+                                <action name="0">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.desktop_image</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">false</param>
+                                    </params>
+                                </action>
+                                <action name="1">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.thumb</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">false</param>
+                                    </params>
+                                </action>
+                                <action name="2">
+                                    <target>hs_banner_slider_banner_form.hs_banner_slider_banner_form.general.html</target>
+                                    <callback>visible</callback>
+                                    <params>
+                                        <param name="0" xsi:type="boolean">true</param>
+                                    </params>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
             </settings>
             <formElements>
                 <select>
@@ -119,6 +176,9 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Banner</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="image" xsi:type="string">image</item>
+                    </item>
                 </item>
             </argument>
             <settings>
@@ -129,6 +189,9 @@
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
+                <imports>
+                    <link name="toggleVisibility">${ $.provider}.data.type</link>
+                </imports>
             </settings>
             <formElements>
                 <imageUploader>
@@ -146,23 +209,13 @@
                 </imageUploader>
             </formElements>
         </field>
-        <field formElement="textarea" name="html" sortOrder="70">
+        <field formElement="imageUploader" name="thumb" sortOrder="70">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Banner</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">HTML</label>
-                <dataScope>html</dataScope>
-                <required>false</required>
-            </settings>
-        </field>
-        <field formElement="imageUploader" name="thumb" sortOrder="80">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="image" xsi:type="string">image</item>
+                    </item>
                 </item>
             </argument>
             <settings>
@@ -187,6 +240,22 @@
                     </settings>
                 </imageUploader>
             </formElements>
+        </field>
+        <field formElement="textarea" name="html" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Banner</item>
+                    <item name="valuesForOptions" xsi:type="array">
+                        <item name="advanced" xsi:type="string">advanced</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">HTML</label>
+                <dataScope>html</dataScope>
+                <required>false</required>
+            </settings>
         </field>
         <field formElement="input" name="url" sortOrder="90">
             <argument name="data" xsi:type="array">
