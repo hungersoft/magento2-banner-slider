@@ -1,13 +1,13 @@
 <?php
 /**
  * Copyright 2019 Hungersoft (http://www.hungersoft.com).
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,6 +17,7 @@
 
 namespace HS\BannerSlider\Model;
 
+use Exception;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use HS\BannerSlider\Api\BannerRepositoryInterface;
@@ -31,29 +32,65 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\Exception\NoSuchEntityException;
 use HS\BannerSlider\Model\ResourceModel\Banner\CollectionFactory as BannerCollectionFactory;
+use HS\BannerSlider\Api\Data\BannerInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
 
 class BannerRepository implements BannerRepositoryInterface
 {
-    protected $dataObjectHelper;
+    /**
+     * @var DataObjectHelper
+     */
+    private $dataObjectHelper;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
-    protected $bannerFactory;
+    /**
+     * @var BannerFactory
+     */
+    private $bannerFactory;
 
-    protected $searchResultsFactory;
+    /**
+     * @var BannerSearchResultsInterfaceFactory
+     */
+    private $searchResultsFactory;
 
-    protected $dataObjectProcessor;
+    /**
+     * @var DataObjectProcessor
+     */
+    private $dataObjectProcessor;
 
-    protected $extensionAttributesJoinProcessor;
+    /**
+     * @var JoinProcessorInterface
+     */
+    private $extensionAttributesJoinProcessor;
 
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
 
-    protected $extensibleDataObjectConverter;
-    protected $resource;
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
+    private $extensibleDataObjectConverter;
 
-    protected $dataBannerFactory;
+    /**
+     * @var ResourceBanner
+     */
+    private $resource;
 
-    protected $bannerCollectionFactory;
+    /**
+     * @var BannerInterfaceFactory
+     */
+    private $dataBannerFactory;
+
+    /**
+     * @var BannerCollectionFactory
+     */
+    private $bannerCollectionFactory;
 
     /**
      * @param ResourceBanner                      $resource
@@ -97,25 +134,14 @@ class BannerRepository implements BannerRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function save(
-        \HS\BannerSlider\Api\Data\BannerInterface $banner
-    ) {
-        /* if (empty($banner->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $banner->setStoreId($storeId);
-        } */
-
-        $bannerData = $this->extensibleDataObjectConverter->toNestedArray(
-            $banner,
-            [],
-            \HS\BannerSlider\Api\Data\BannerInterface::class
-        );
-
+    public function save(BannerInterface $banner)
+    {
+        $bannerData = $this->extensibleDataObjectConverter->toNestedArray($banner, [], BannerInterface::class);
         $bannerModel = $this->bannerFactory->create()->setData($bannerData);
 
         try {
             $this->resource->save($bannerModel);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the banner: %1',
                 $exception->getMessage()
@@ -142,16 +168,10 @@ class BannerRepository implements BannerRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
+    public function getList(SearchCriteriaInterface $criteria)
+    {
         $collection = $this->bannerCollectionFactory->create();
-
-        $this->extensionAttributesJoinProcessor->process(
-            $collection,
-            \HS\BannerSlider\Api\Data\BannerInterface::class
-        );
-
+        $this->extensionAttributesJoinProcessor->process($collection, BannerInterface::class);
         $this->collectionProcessor->process($criteria, $collection);
 
         $searchResults = $this->searchResultsFactory->create();
@@ -171,14 +191,13 @@ class BannerRepository implements BannerRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function delete(
-        \HS\BannerSlider\Api\Data\BannerInterface $banner
-    ) {
+    public function delete(BannerInterface $banner)
+    {
         try {
             $bannerModel = $this->bannerFactory->create();
             $this->resource->load($bannerModel, $banner->getBannerId());
             $this->resource->delete($bannerModel);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new CouldNotDeleteException(__(
                 'Could not delete the Banner: %1',
                 $exception->getMessage()

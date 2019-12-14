@@ -1,13 +1,13 @@
 <?php
 /**
  * Copyright 2019 Hungersoft (http://www.hungersoft.com).
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,57 +17,57 @@
 
 namespace HS\BannerSlider\Api;
 
+use HS\BannerSlider\Api\Data\BannerInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use HS\BannerSlider\Api\Data\BannerSearchResultsInterface;
+
 interface BannerRepositoryInterface
 {
     /**
      * Save Banner.
      *
-     * @param \HS\BannerSlider\Api\Data\BannerInterface $banner
+     * @param BannerInterface $banner
      *
-     * @return \HS\BannerSlider\Api\Data\BannerInterface
+     * @return BannerInterface
      *
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function save(
-        \HS\BannerSlider\Api\Data\BannerInterface $banner
-    );
+    public function save(BannerInterface $banner);
 
     /**
      * Retrieve Banner.
      *
      * @param string $bannerId
      *
-     * @return \HS\BannerSlider\Api\Data\BannerInterface
+     * @return BannerInterface
      *
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function get($bannerId);
 
     /**
      * Retrieve Banner matching the specified criteria.
      *
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @param SearchCriteriaInterface $searchCriteria
      *
-     * @return \HS\BannerSlider\Api\Data\BannerSearchResultsInterface
+     * @return BannerSearchResultsInterface
      *
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-    );
+    public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
      * Delete Banner.
      *
-     * @param \HS\BannerSlider\Api\Data\BannerInterface $banner
+     * @param BannerInterface $banner
      *
      * @return bool true on success
      *
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function delete(
-        \HS\BannerSlider\Api\Data\BannerInterface $banner
-    );
+    public function delete(BannerInterface $banner);
 
     /**
      * Delete Banner by ID.
@@ -76,8 +76,8 @@ interface BannerRepositoryInterface
      *
      * @return bool true on success
      *
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
      */
     public function deleteById($bannerId);
 }

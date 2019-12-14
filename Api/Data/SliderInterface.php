@@ -17,7 +17,9 @@
 
 namespace HS\BannerSlider\Api\Data;
 
-interface SliderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+use Magento\Framework\Api\ExtensibleDataInterface;
+
+interface SliderInterface extends ExtensibleDataInterface
 {
     const EFFECT = 'effect';
     const AUTOPLAY_TIMEOUT = 'autoplay_timeout';

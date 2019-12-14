@@ -88,13 +88,13 @@ class DataProvider extends AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
 
-        $data = $this->dataPersistor->get('hs_banner_slider_banner');
-        if (!empty($data)) {
-            $model = $this->collection->getNewEmptyItem();
-            $model->setData($data);
-            $this->loadedData[$model->getId()] = $model->getData();
-            $this->dataPersistor->clear('hs_banner_slider_banner');
-        }
+        // $data = $this->dataPersistor->get('hs_banner_slider_banner');
+        // if (!empty($data)) {
+        //     $model = $this->collection->getNewEmptyItem();
+        //     $model->setData($data);
+        //     $this->loadedData[$model->getId()] = $model->getData();
+        //     $this->dataPersistor->clear('hs_banner_slider_banner');
+        // }
 
         /** @var ModifierInterface $modifier */
         foreach ($this->pool->getModifiersInstances() as $modifier) {
