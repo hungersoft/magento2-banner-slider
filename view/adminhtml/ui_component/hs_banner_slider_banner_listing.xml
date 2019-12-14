@@ -104,24 +104,12 @@
                 <label translate="true">Type</label>
                 <options class="HS\BannerSlider\Model\Config\Source\Type"/>
                 <filter>select</filter>
-                <editor>
-                    <editorType>select</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                </editor>
                 <dataType>select</dataType>
             </settings>
         </column>
         <column name="desktop_image" class="HS\BannerSlider\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail">
             <settings>
                 <label translate="true">Image</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
             </settings>
         </column>
         <column name="created_at">
