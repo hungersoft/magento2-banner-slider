@@ -241,22 +241,6 @@
                 </imageUploader>
             </formElements>
         </field>
-        <field formElement="textarea" name="html" sortOrder="80">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Banner</item>
-                    <item name="valuesForOptions" xsi:type="array">
-                        <item name="advanced" xsi:type="string">advanced</item>
-                    </item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">HTML</label>
-                <dataScope>html</dataScope>
-                <required>false</required>
-            </settings>
-        </field>
         <field formElement="input" name="url" sortOrder="90">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

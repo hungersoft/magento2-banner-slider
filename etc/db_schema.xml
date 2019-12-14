@@ -10,7 +10,6 @@
         <column name="description" nullable="true" xsi:type="text"/>
         <column name="type" nullable="false" default="image" xsi:type="varchar"/>
         <column length="255" name="desktop_image" nullable="true" xsi:type="varchar"/>
-        <column name="html" nullable="true" xsi:type="text"/>
         <column length="255" name="thumb" nullable="true" xsi:type="varchar"/>
         <column length="255" name="url" nullable="true" xsi:type="varchar"/>
         <column name="open_new_window" nullable="true" xsi:type="boolean"/>
