@@ -23,7 +23,6 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use HS\BannerSlider\Model\BannerFactory;
-use Magento\Catalog\Model\ImageUploader;
 
 class Save extends Action
 {
@@ -38,25 +37,17 @@ class Save extends Action
     private $bannerFactory;
 
     /**
-     * @var ImageUploader
-     */
-    private $imageUploader;
-
-    /**
      * @param Context                $context
      * @param DataPersistorInterface $dataPersistor
      * @param BannerFactory          $bannerFactory
-     * @param ImageUploader          $imageUploader
      */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
-        BannerFactory $bannerFactory,
-        ImageUploader $imageUploader
+        BannerFactory $bannerFactory
     ) {
         $this->bannerFactory = $bannerFactory;
         $this->dataPersistor = $dataPersistor;
-        $this->imageUploder = $imageUploader;
 
         parent::__construct($context);
     }
@@ -78,10 +69,6 @@ class Save extends Action
                 $this->messageManager->addErrorMessage(__('This Banner no longer exists.'));
 
                 return $resultRedirect->setPath('*/*/');
-            }
-
-            foreach (['desktop_image', 'mobile_image', 'thumb'] as $field) {
-                $data = $this->processImages($data, $field);
             }
 
             $banner->setData($data);
@@ -108,27 +95,5 @@ class Save extends Action
         }
 
         return $resultRedirect->setPath('*/*/');
-    }
-
-    /**
-     * Set uploaded images to save data.
-     *
-     * @param array  $data
-     * @param string $fieldName
-     *
-     * @return array
-     */
-    protected function processImages($data, $fieldName)
-    {
-        if (isset($data[$fieldName][0]['name']) && isset($data[$fieldName][0]['tmp_name'])) {
-            $data[$fieldName] = $data[$fieldName][0]['name'];
-            $this->imageUploader->moveFileFromTmp($data[$fieldName]);
-        } elseif (isset($data[$fieldName][0]['name']) && !isset($data[$fieldName][0]['tmp_name'])) {
-            $data[$fieldName] = $data[$fieldName][0]['name'];
-        } else {
-            $data[$fieldName] = null;
-        }
-
-        return $data;
     }
 }
