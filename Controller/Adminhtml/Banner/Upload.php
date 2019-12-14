@@ -37,7 +37,7 @@ class Upload extends Action
      */
     public function execute()
     {
-        $imageUploadId = $this->_request->getParam('param_name', 'review_image');
+        $imageUploadId = $this->_request->getParam('param_name', 'banner_image');
 
         try {
             $imageResult = $this->imageUploader->saveFileToTmpDir($imageUploadId);
